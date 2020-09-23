@@ -6,7 +6,7 @@ import MyImage from './assets/reactLogo.png';
 const App = () => {
   return (
     <div>
-        <div>Welcome to my-webpack-react-starter</div>
+        <div>Welcomedfdf to my-webpackdfdff-react-starter</div>
         <img src={MyImage} />
 
     </div>
