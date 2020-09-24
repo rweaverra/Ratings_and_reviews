@@ -1,1 +1,1 @@
-# Reviews
+# Related Items & Comparisons
