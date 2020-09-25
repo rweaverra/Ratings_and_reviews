@@ -64,6 +64,28 @@ const exampleReview = {
       photos: [],
     },
   ],
-}
+};
 
-export default exampleReview;
+const exampleRating = {
+  product_id: '2',
+  ratings: {
+    1: 1,
+    2: 3,
+    3: 11,
+    4: 12,
+    5: 10,
+  },
+  recommended: {
+    0: 13,
+    1: 23,
+    null: 1,
+  },
+  characteristics: {
+    Quality: {
+      id: 5,
+      value: '4.1000',
+    },
+  },
+};
+
+export { exampleReview, exampleRating };

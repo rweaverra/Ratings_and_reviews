@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Review(props) {
-  console.log('inside Review', props.review);
   return (
     <div>
       <div>{props.review.rating}</div>
