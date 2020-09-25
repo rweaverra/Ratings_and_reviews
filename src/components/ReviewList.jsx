@@ -2,7 +2,7 @@ import React from 'react';
 import Review from './Review.jsx';
 
 function ReviewList(props) {
-  const listReviews = props.example.results.map((review, i) =>
+  const listReviews = props.example.map((review, i) =>
     <Review key={i + 'review'} review={review} />);
   return (
     <div>

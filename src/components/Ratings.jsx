@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Ratings(props) {
-  console.log('inside ratings', props.ratings);
   var one = props.ratings.ratings['1'];
   var two = props.ratings.ratings['2'];
   var three = props.ratings.ratings['3'];
