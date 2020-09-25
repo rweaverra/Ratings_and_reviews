@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard.jsx';
-import MultiCarousel from './MultiCarousel.jsx';
 
-const App = () => (
-  <div>
-    <div>
-      <ProductCard></ProductCard>
+function App(props) {
+  return (
+    <div className="container">
+      <div>
+        <ProductCard />
+      </div>
     </div>
-    <div>
-      <MultiCarousel></MultiCarousel>
-    </div>
-  </div>
-);
+  )
+}
 
 export default App;

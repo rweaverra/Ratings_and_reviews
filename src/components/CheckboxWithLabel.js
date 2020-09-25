@@ -1,15 +1,11 @@
 // CheckboxWithLabel.js
 
 import React from 'react';
-// import { configure } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
-
-// configure({ adapter: new Adapter() });
 
 export default class CheckboxWithLabel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isChecked: false };
+    this.state = {isChecked: false};
 
     // bind manually because React class components don't auto-bind
     // https://reactjs.org/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
@@ -17,7 +13,7 @@ export default class CheckboxWithLabel extends React.Component {
   }
 
   onChange() {
-    this.setState({ isChecked: !this.state.isChecked });
+    this.setState({isChecked: !this.state.isChecked});
   }
 
   render() {
