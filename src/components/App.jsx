@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import ProductCard from './ProductCard.jsx';
+import Ratings from './Ratings.jsx';
+import ReviewList from './ReviewList.jsx';
+import exampleReview from './exampleReview.js';
+
 
 function App(props) {
   return (
     <div className="container">
       <div>
-        <ProductCard />
+        <Ratings />
+      </div>
+      <div>
+        {console.log(exampleReview)}
+        <ReviewList />
       </div>
     </div>
   )
 }
 
 export default App;
+
