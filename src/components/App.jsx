@@ -11,8 +11,7 @@ function App(props) {
         <Ratings />
       </div>
       <div>
-        {console.log('example review', exampleReview)}
-        <ReviewList />
+        <ReviewList example={exampleReview}/>
       </div>
     </div>
   )

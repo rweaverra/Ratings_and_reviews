@@ -1,11 +1,12 @@
 import React from 'react';
 
-function Review() {
+function Review(props) {
+  console.log('inside Review', props.review);
   return (
     <div>
-      <div>star rating                  user</div>
-      <h3>review title</h3>
-      <div>review description</div>
+      <div>{props.review.rating}</div>
+      <h3>{props.review.summary}</h3>
+      <div>{props.review.body}</div>
       <div>helpful button  || report button</div>
     </div>
   );
