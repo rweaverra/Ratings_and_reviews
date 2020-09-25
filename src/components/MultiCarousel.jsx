@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MultiCarousel extends React.Components {
+class MultiCarousel extends React.Component {
   constructor(props) {
     super(props);
 
@@ -10,9 +10,9 @@ class MultiCarousel extends React.Components {
   }
 
   render() {
-    return(
+    return (
       <div>
-
+            asd  fdsfd
       </div>
     );
   }

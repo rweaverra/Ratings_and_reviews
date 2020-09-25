@@ -1,9 +1,15 @@
 import React from 'react';
-import ProductCard from './ProductCard.jsx'
+import ProductCard from './ProductCard.jsx';
+import MultiCarousel from './MultiCarousel.jsx';
 
 const App = () => (
   <div>
-    <ProductCard></ProductCard>
+    <div>
+      <ProductCard></ProductCard>
+    </div>
+    <div>
+      <MultiCarousel></MultiCarousel>
+    </div>
   </div>
 );
 
