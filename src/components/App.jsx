@@ -31,7 +31,7 @@ function App(props) {
  return (
     <div className="container">
       <div>
-        <Ratings ratings={ratings.ratings}/>
+        <Ratings ratings={ratings}/>
         {console.log('ratings', ratings)}
       </div>
       <div>
