@@ -2,4 +2,5 @@ webpack.config.js,
 .eslintrc.js,
 bundle.js,
 src/,
-App.jsx
+App.jsx,
+CheckboxWithLabel.test.js
