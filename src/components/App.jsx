@@ -11,7 +11,7 @@ import axios from 'axios';
 function App(props) {
 
   const [reviews, setReviews] = useState([]);
-
+  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     axios.get('http://52.26.193.201:3000/reviews/1/list')
@@ -19,19 +19,26 @@ function App(props) {
     setReviews(response.data.results);
   }
 )
+  axios.get('http://52.26.193.201:3000/reviews/1/meta')
+    .then(response => {
+      setRatings(response.data);
+    })
   }, []);
+
 
 
 
  return (
     <div className="container">
       <div>
-        <Ratings ratings={exampleRating}/>
+        <Ratings ratings={ratings.ratings}/>
+        {console.log('ratings', ratings)}
       </div>
       <div>
-        <ReviewList example={reviews}/>
+        <ReviewList example={reviews}/>s
+        {console.log('reviews', reviews)}
       </div>
-      <div>{console.log('reviews/state:', reviews)}</div>
+      <div></div>
     </div>
   )
 }
