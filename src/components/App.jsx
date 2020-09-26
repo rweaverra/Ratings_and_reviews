@@ -11,7 +11,7 @@ import axios from 'axios';
 function App(props) {
 
   const [reviews, setReviews] = useState([]);
-  const [ratings, setRatings] = useState({});
+  const [ratings, setRatings] = useState(exampleRating);
 
   useEffect(() => {
     axios.get('http://52.26.193.201:3000/reviews/1/list')
