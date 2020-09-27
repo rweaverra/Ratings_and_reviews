@@ -8,15 +8,17 @@ import ReviewList from './ReviewList.jsx';
 import { exampleReview, exampleRating } from './exampleReview.js';
 
 function App(props) {
-  const [reviews, setReviews] = useState([]);
-  const [ratings, setRatings] = useState(exampleRating);
+
+  const initialState = exampleRating;
+  const [reviews, setReviews] = useState(exampleReview.results);
+  const [ratings, setRatings] = useState(initialState);
 
   useEffect(() => {
     axios.get('http://52.26.193.201:3000/reviews/1/list')
       .then((response) => {
         setReviews(response.data.results);
       });
-    axios.get('http://52.26.193.201:3000/reviews/1/meta')
+    axios.get('http://52.26.193.201:3000/reviews/4/meta')
       .then((response) => {
         setRatings(response.data);
       });

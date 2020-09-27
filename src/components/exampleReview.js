@@ -81,9 +81,21 @@ const exampleRating = {
     null: 1,
   },
   characteristics: {
+    Fit: {
+      id: 1,
+      value: '2.4800',
+    },
+    Length: {
+      id: 2,
+      value: '2.6000',
+    },
+    Comfort: {
+      id: 3,
+      value: '3.5200',
+    },
     Quality: {
-      id: 5,
-      value: '4.1000',
+      id: 4,
+      value: '3.4400',
     },
   },
 };

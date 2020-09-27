@@ -31,7 +31,8 @@ function Ratings({ ratings }) {
           </li>
         </ul>
       </div>
-      <div>Size and Comfort</div>
+      <div>Size 1-5: {ratings.characteristics.Fit.value} </div>
+      <div>Comfort: {ratings.characteristics.Comfort.value}</div>
     </div>
   );
 }
