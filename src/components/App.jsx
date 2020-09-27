@@ -31,7 +31,7 @@ function App(props) {
           <Ratings ratings={ratings} />
         </Col>
         <Col sm={6}>
-          <ReviewList example={reviews} />
+          <ReviewList reviews={reviews} />
         </Col>
       </Row>
     </Container>
