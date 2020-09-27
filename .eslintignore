@@ -1,6 +1,5 @@
 webpack.config.js,
 .eslintrc.js,
 bundle.js,
-src/,
 App.jsx,
 CheckboxWithLabel.test.js
