@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import Review from './Review.jsx';
+import {Modal, ModalDialog, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button } from 'react-bootstrap';
+
 
 function ReviewList(props) {
 const first = props.reviews[0];
@@ -9,17 +11,18 @@ const second = props.reviews[1];
   const [displayedReviews, setDisplayedReviews] = useState([first, second]);
   const [counter, setCounter] = useState(2);
 
-  console.log('reviewList', reviewList);
   function addReviews() {
-    //grab the next two reviews from reviews list- slice
      var nextReviews = reviewList.slice(counter, counter + 2);
      console.log(nextReviews);
      var combineReviews = displayedReviews.concat(nextReviews);
      setDisplayedReviews(combineReviews);
      setCounter(counter + 2);
-    //add two additional reviews to displayed reviews- push
-    //add to counter by 2 so that I know the next two to grab.
   };
+
+       //Modal===========
+       const [show, setShow] = useState(false);
+       const handleClose = () => setShow(false);
+       function handleShow() {setShow(true)};
 
   const listReviews = displayedReviews.map((review, i) =>
     <Review key={i + 'review'} review={review} />);
@@ -32,7 +35,27 @@ const second = props.reviews[1];
       <div>
         {listReviews}
       </div>
-      <button onClick={addReviews}>More Reviews Button</button> || <button>Add a review</button>
+      <button onClick={addReviews}>More Reviews Button</button> || <button onClick={handleShow}>Add a review</button>
+      <div>
+
+      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add A Review</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>What do you think of this product?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
+
     </div>
   );
 }

@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
+import axios from 'axios';
 
 function Ratings({ ratings }) {
   const [individualRatings] = useState(ratings.ratings);
+  const [testRatings, setRatings] = useState({});
+
+  useEffect(() => {
+    axios.get('http://52.26.193.201:3000/reviews/4/meta')
+    .then(res => {
+      console.log(res.data)
+      setRatings(res.data.ratings);
+    });
+  }, []);
+
+   console.log('inside Ratings testRatings:', testRatings);
 
   return (
     <div>
