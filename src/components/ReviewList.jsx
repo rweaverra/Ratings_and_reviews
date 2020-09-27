@@ -6,6 +6,7 @@ function ReviewList(props) {
     <Review key={i + 'review'} review={review} />);
   return (
     <div>
+      <h2>Reviews</h2>
       Show total reviews sorted by "relevace, newest, etc"
       <div>
         {listReviews}

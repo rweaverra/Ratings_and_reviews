@@ -6,7 +6,7 @@ function Ratings({ ratings }) {
 
   return (
     <div>
-      <h2>Star Average per product</h2>
+      <h2>Ratings</h2>
       <div>
         <ul>
           <li>
