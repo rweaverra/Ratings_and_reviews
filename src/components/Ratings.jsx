@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 function Ratings({ ratings }) {
-  const [individualRatings, setIndividualRatings] = useState(ratings.ratings);
-
+  const [individualRatings] = useState(ratings.ratings);
 
   return (
     <div>
@@ -31,8 +30,14 @@ function Ratings({ ratings }) {
           </li>
         </ul>
       </div>
-      <div>Size 1-5: {ratings.characteristics.Fit.value} </div>
-      <div>Comfort: {ratings.characteristics.Comfort.value}</div>
+      <div>
+        Size 1-5:
+        {ratings.characteristics.Fit.value}
+      </div>
+      <div>
+        Comfort:
+        {ratings.characteristics.Comfort.value}
+      </div>
     </div>
   );
 }
