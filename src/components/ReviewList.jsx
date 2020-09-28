@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Review from './Review.jsx';
-import {Modal, ModalDialog, ModalHeader, ModalTitle, ModalBody, ModalFooter, Button } from 'react-bootstrap';
+import FormModal from './FormModal.jsx';
+
 
 
 function ReviewList(props) {
@@ -37,23 +38,7 @@ const second = props.reviews[1];
       <div>
 
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add A Review</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>What do you think of this product?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-
-
+      <FormModal show={show} onHide={handleClose}></FormModal>
     </div>
   );
 }
