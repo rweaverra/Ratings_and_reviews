@@ -9,9 +9,8 @@ import ReviewList from './ReviewList.jsx';
 import { exampleReview, exampleRating } from './exampleReview.js';
 
 function App() {
-  const initialState = exampleRating;
   const [reviews, setReviews] = useState([]);
-  const [ratings, setRatings] = useState(initialState);
+  const [ratings, setRatings] = useState({});
   const [error, setError] = useState(null);
   const [reviewsLoaded, setReviewsLoaded] = useState(false);
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
@@ -27,7 +26,7 @@ function App() {
         setRatingsLoaded(true);
         setRatings(response.data);
       });
-  }, [reviews]);
+  }, []);
 
   if (!reviewsLoaded || !ratingsLoaded) {
     return <div>Loading...</div>;

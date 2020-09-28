@@ -21,7 +21,7 @@ function FormModal(props) {
       </Modal>
     );
   }
-  return <div>modal</div>;
+  return <div></div>;
 }
 
 export default FormModal;

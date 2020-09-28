@@ -3,6 +3,9 @@ import axios from 'axios';
 
 function Ratings({ ratings }) {
 
+  if(!ratings.ratings) {
+    return <div></div>
+  }else {
 
   return (
     <div>
@@ -41,6 +44,7 @@ function Ratings({ ratings }) {
       </div>
     </div>
   );
+  }
 }
 
 export default Ratings;
