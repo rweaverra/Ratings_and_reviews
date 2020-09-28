@@ -14,7 +14,7 @@ function FormModal(props) {
           </Modal.Header>
 
           <Modal.Body>
-            <FormInputs />
+            <FormInputs onHide={props.onHide}/>
           </Modal.Body>
           <Modal.Footer />
         </Modal.Dialog>

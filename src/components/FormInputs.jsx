@@ -4,35 +4,36 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 
-function FormInputs() {
+function FormInputs(props) {
 
+  function submitForm(event) {
+    event.preventDefault();
+    props.onHide();
+    axios({
+      method: 'post',
+      url: 'http://52.26.193.201:3000/reviews/1',
+      data: {
+        rating: 5,
+        summary: "SOO GOOD",
+        Body: "feels like a cloud",
+        reccomend: true,
+        name: "Big Bird",
+        email: "big@bird.com",
+        characteristics {
+          "14": 5,
+          "16": 5
+        }
+      }
+    })
 
-useEffect(() => {
-  console.log('inside form inputs')
-   axios({
-     method: 'post',
-     url: 'http://52.26.193.201:3000/reviews/1',
-     data: {
-       rating: 5,
-       summary: "SOO GOOD",
-       Body: "feels like a cloud",
-       reccomend: true,
-       name: "Big Bird",
-       email: "big@bird.com",
-       characteristics {
-         "14": 5,
-         "16": 5
-       }
-     }
+ };
 
-   })
-}, []);
 
 
   return (
 
     <div>
-      <Form>
+      <Form onSubmit={submitForm} >
 
         <Form.Group controlId="formChooseRatings">
           <Form.Label>Rate the product</Form.Label>
@@ -117,7 +118,7 @@ useEffect(() => {
 
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" >
           Submit
         </Button>
       </Form>

@@ -2,10 +2,9 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 
 function Ratings({ ratings }) {
-
-  if(!ratings.ratings) {
-    return <div></div>
-  }else {
+  if (!ratings.ratings) {
+    return <div />;
+  }
 
   return (
     <div>
@@ -44,7 +43,6 @@ function Ratings({ ratings }) {
       </div>
     </div>
   );
-  }
 }
 
 export default Ratings;
