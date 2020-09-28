@@ -27,24 +27,25 @@ function App() {
         setRatingsLoaded(true);
         setRatings(response.data);
       });
-  }, []);
+  }, [reviews]);
 
   if (!reviewsLoaded || !ratingsLoaded) {
     return <div>Loading...</div>;
-  } else {
+  }
   return (
     <Container>
       <Row>
-        <Col sm={6}>
+        <Col sm={2} />
+        <Col sm={3}>
           <Ratings ratings={ratings} />
         </Col>
-        <Col sm={6}>
+        <Col sm={5}>
           <ReviewList reviews={reviews} />
         </Col>
+        <Col sm={2} />
       </Row>
     </Container>
   );
-  }
 }
 
 export default App;

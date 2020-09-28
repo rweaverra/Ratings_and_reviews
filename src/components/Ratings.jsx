@@ -2,7 +2,6 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 
 function Ratings({ ratings }) {
-  const [individualRatings] = useState(ratings.ratings);
   const [testRatings, setRatings] = useState({});
 
   useEffect(() => {
@@ -22,23 +21,23 @@ function Ratings({ ratings }) {
         <ul>
           <li>
             1 star ratings:
-            {individualRatings['1']}
+            {ratings.ratings['1']}
           </li>
           <li>
             2 star ratings
-            {individualRatings['2']}
+            {ratings.ratings['2']}
           </li>
           <li>
             3 star ratings
-            {individualRatings['3']}
+            {ratings.ratings['3']}
           </li>
           <li>
             4 star ratings
-            {individualRatings['4']}
+            {ratings.ratings['4']}
           </li>
           <li>
             5 star ratings
-            {individualRatings['5']}
+            {ratings.ratings['5']}
           </li>
         </ul>
       </div>

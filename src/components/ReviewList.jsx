@@ -7,13 +7,11 @@ function ReviewList(props) {
 const first = props.reviews[0];
 const second = props.reviews[1];
 
-  const [reviewList, setReviewList] = useState(props.reviews);
   const [displayedReviews, setDisplayedReviews] = useState([first, second]);
   const [counter, setCounter] = useState(2);
 
   function addReviews() {
-     var nextReviews = reviewList.slice(counter, counter + 2);
-     console.log(nextReviews);
+     var nextReviews = props.reviews.slice(counter, counter + 2);
      var combineReviews = displayedReviews.concat(nextReviews);
      setDisplayedReviews(combineReviews);
      setCounter(counter + 2);
