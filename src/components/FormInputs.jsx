@@ -15,17 +15,20 @@ function FormInputs(props) {
         rating: state.rating,
         summary: state.summary,
         body: state.body,
-        recommend: state.recommend,
+        recommend: true,
         name: state.name,
-        email: state.email,
+        email: 'state.email@er.com',
         characteristics: {
           '14': state.characteristics['14'],
           '16': state.characteristics['16']
         },
-      },
+      }
     })
       .then((response) => {
         console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -38,9 +41,9 @@ function FormInputs(props) {
     name: '',
     email: '',
     characteristics: {
-      '14': '',
-      '16': ''
-    }
+      14: '',
+      16: '',
+    },
 
   });
 
@@ -55,30 +58,31 @@ function FormInputs(props) {
 
   function handleSelect(event) {
     const value = parseInt(event.target.value);
-    setState({...state,
-        rating: value
-    })
+    setState({
+      ...state,
+      rating: value,
+    });
   }
 
   function handleRadio(event) {
-    const isRecommended = event.currentTarget.value === 'yes' ? true: false;
-    setState ({...state,
-      recommend: isRecommended
-    })
+    const isRecommended = event.currentTarget.value === 'yes';
+    setState({
+      ...state,
+      recommend: isRecommended,
+    });
     console.log(state);
   }
 
   function handleCharacteristics(event) {
     const value = parseInt(event.target.value);
 
-    setState ({
+    setState({
       ...state,
       characteristics: {
         ...state.characteristics,
-        [event.target.name]: value
-      }
-    })
-
+        [event.target.name]: value,
+      },
+    });
   }
 
   return (
@@ -152,7 +156,7 @@ function FormInputs(props) {
           <Form.Label>Characteristics</Form.Label>
           <Form.Group>
             <Form.Label>Size</Form.Label>
-            <Form.Control as="select" name={'14'} value={state.characteristics['14']} onChange={handleCharacteristics}>
+            <Form.Control as="select" name="14" value={state.characteristics['14']} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -162,7 +166,7 @@ function FormInputs(props) {
           </Form.Group>
           <Form.Group>
             <Form.Label>Comfort</Form.Label>
-            <Form.Control as="select" name={'16'} value={state.characteristics['16']} onChange={handleCharacteristics}>
+            <Form.Control as="select" name="16" value={state.characteristics['16']} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
