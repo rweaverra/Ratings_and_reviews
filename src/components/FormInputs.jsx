@@ -36,7 +36,11 @@ function FormInputs(props) {
     body: '',
     recommend: '',
     name: '',
-    email: ''
+    email: '',
+    characteristics: {
+      "14": '',
+      "16": ''
+    },
 
   });
 
@@ -62,6 +66,17 @@ function FormInputs(props) {
       recommend: isRecommended
     })
     console.log(state);
+  }
+
+  function handleCharacteristics (event) {
+    const value = parseInt(event.target.value);
+    setState ({...state,
+      characteristics: {
+        ...state.characteristics,
+          [event.target.name]: value
+      }
+
+    })
   }
 
   return (
@@ -135,7 +150,7 @@ function FormInputs(props) {
           <Form.Label>Characteristics</Form.Label>
           <Form.Group>
             <Form.Label>Size</Form.Label>
-            <Form.Control as="select">
+            <Form.Control as="select" name="14" value={state.characteristics['14']} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -145,7 +160,7 @@ function FormInputs(props) {
           </Form.Group>
           <Form.Group>
             <Form.Label>Comfort</Form.Label>
-            <Form.Control as="select">
+            <Form.Control as="select" name="16" value={state.characteristics["16"]} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
