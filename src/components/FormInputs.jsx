@@ -31,7 +31,7 @@ function FormInputs(props) {
 
   // handle multiple inputs
   const [state, setState] = React.useState({
-    rating: 0,
+    rating: '',
     summary: '',
     body: '',
     recommend: '',
@@ -49,6 +49,21 @@ function FormInputs(props) {
     console.log(state);
   }
 
+  function handleSelect(event) {
+    const value = parseInt(event.target.value);
+    setState({...state,
+        rating: value
+    })
+  }
+
+  function handleRadio(event) {
+    const isRecommended = event.currentTarget.value === 'yes' ? true: false;
+    setState ({...state,
+      recommend: isRecommended
+    })
+    console.log(state);
+  }
+
   return (
 
     <div>
@@ -56,7 +71,7 @@ function FormInputs(props) {
 
         <Form.Group controlId="formChooseRatings">
           <Form.Label>Rate the product</Form.Label>
-          <Form.Control as="select" name="rating" value={state.rating} onChange={handleChange}>
+          <Form.Control as="select" name="rating" value={state.rating} onChange={handleSelect}>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -79,21 +94,19 @@ function FormInputs(props) {
           <Form.Label>Do you reccomend this Product?</Form.Label>
           <Form.Check
             type="radio"
-            label="true"
-            name="recommend"
+            label="yes"
             id="recommendTrue"
-            value="true"
+            value="yes"
             checked={state.recommend === true}
-            onChange={handleChange}
+            onChange={handleRadio}
           />
           <Form.Check
             type="radio"
-            label="false"
-            name="recommend"
+            label="no"
             id="recommendFalse"
-            value="false"
+            value="no"
             checked={state.recommend === false}
-            onChange={handleChange}
+            onChange={handleRadio}
           />
 
         </Form.Group>
