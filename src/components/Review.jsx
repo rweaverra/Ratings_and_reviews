@@ -16,7 +16,7 @@ function Review(props) {
         Summary:
         {props.review.body}
       </div>
-      <div> <Helpful review={props.review}/>   || report button</div>
+      <div> <Helpful review={props.review} getReviews={props.getReviews}/>  || report button</div>
     </div>
   );
 }
