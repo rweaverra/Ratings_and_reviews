@@ -17,7 +17,7 @@ function FormInputs(props) {
         body: state.body,
         recommend: true,
         name: state.name,
-        email: 'state.email@er.com',
+        email: state.email, //hard coded for ease of use
         characteristics: {
           '14': state.characteristics['14'],
           '16': state.characteristics['16']
@@ -25,11 +25,13 @@ function FormInputs(props) {
       }
     })
       .then((response) => {
-        console.log(response.data);
+        console.log(props.getReviews);
+        props.getReviews();
       })
       .catch((error) => {
         console.log(error);
       });
+
   }
 
   // handle multiple inputs

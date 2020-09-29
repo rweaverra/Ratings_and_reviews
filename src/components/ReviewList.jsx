@@ -38,7 +38,7 @@ const second = props.reviews[1];
       <div>
 
       </div>
-      <FormModal show={show} onHide={handleClose}></FormModal>
+      <FormModal show={show} onHide={handleClose} getReviews={props.getReviews}></FormModal>
     </div>
   );
 }

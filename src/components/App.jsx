@@ -15,17 +15,27 @@ function App() {
   const [reviewsLoaded, setReviewsLoaded] = useState(false);
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
 
-  useEffect(() => {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=30')
+  function getReviews() {
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=100')
       .then((response) => {
         setReviewsLoaded(true);
         setReviews(response.data.results);
       });
+  }
+
+  function getRatings() {
     axios.get('http://52.26.193.201:3000/reviews/4/meta')
-      .then((response) => {
-        setRatingsLoaded(true);
-        setRatings(response.data);
-      });
+    .then((response) => {
+      setRatingsLoaded(true);
+      setRatings(response.data);
+    });
+
+  }
+
+  useEffect(() => {
+    getReviews();
+    getRatings();
+
   }, []);
 
   if (!reviewsLoaded || !ratingsLoaded) {
@@ -39,7 +49,7 @@ function App() {
           <Ratings ratings={ratings} />
         </Col>
         <Col sm={5}>
-          <ReviewList reviews={reviews} />
+          <ReviewList reviews={reviews} getReviews={getReviews} />
         </Col>
         <Col sm={2} />
       </Row>
