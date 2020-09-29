@@ -12,15 +12,15 @@ function FormInputs(props) {
       method: 'post',
       url: 'http://52.26.193.201:3000/reviews/1',
       data: {
-        rating: 5,
-        summary: 'SOO GOOD',
-        body: 'feels like a cloud',
-        recommend: true,
-        name: 'Big Bird',
-        email: 'big@bird.com',
+        rating: state.rating,
+        summary: state.summary,
+        body: state.body,
+        recommend: state.recommend,
+        name: state.name,
+        email: state.email,
         characteristics: {
-          14: 5,
-          16: 5,
+          '14': state.characteristics['14'],
+          '16': state.characteristics['16']
         },
       },
     })
@@ -38,9 +38,9 @@ function FormInputs(props) {
     name: '',
     email: '',
     characteristics: {
-      "14": '',
-      "16": ''
-    },
+      '14': '',
+      '16': ''
+    }
 
   });
 
@@ -68,15 +68,17 @@ function FormInputs(props) {
     console.log(state);
   }
 
-  function handleCharacteristics (event) {
+  function handleCharacteristics(event) {
     const value = parseInt(event.target.value);
-    setState ({...state,
+
+    setState ({
+      ...state,
       characteristics: {
         ...state.characteristics,
-          [event.target.name]: value
+        [event.target.name]: value
       }
-
     })
+
   }
 
   return (
@@ -150,7 +152,7 @@ function FormInputs(props) {
           <Form.Label>Characteristics</Form.Label>
           <Form.Group>
             <Form.Label>Size</Form.Label>
-            <Form.Control as="select" name="14" value={state.characteristics['14']} onChange={handleCharacteristics}>
+            <Form.Control as="select" name={'14'} value={state.characteristics['14']} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -160,7 +162,7 @@ function FormInputs(props) {
           </Form.Group>
           <Form.Group>
             <Form.Label>Comfort</Form.Label>
-            <Form.Control as="select" name="16" value={state.characteristics["16"]} onChange={handleCharacteristics}>
+            <Form.Control as="select" name={'16'} value={state.characteristics['16']} onChange={handleCharacteristics}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
