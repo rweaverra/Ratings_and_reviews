@@ -3,4 +3,5 @@ webpack.config.js,
 bundle.js,
 CheckboxWithLabel.test.js,
 ReviewList.jsx,
-Helpful.jsx
+Helpful.jsx,
+ReportButton.jsx

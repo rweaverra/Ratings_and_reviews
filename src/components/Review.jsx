@@ -1,5 +1,6 @@
 import React from 'react';
 import Helpful from './Helpful.jsx';
+import ReportButton from './ReportButton.jsx';
 
 function Review(props) {
   if (!props.review) {
@@ -16,7 +17,9 @@ function Review(props) {
         Summary:
         {props.review.body}
       </div>
-      <div> <Helpful review={props.review} getReviews={props.getReviews}/>  || report button</div>
+      <div> <Helpful review={props.review} getReviews={props.getReviews}/>      <ReportButton  review={props.review} getReviews={props.getReviews} deleteReview={props.deleteReview}/>
+
+       </div>
     </div>
   );
 }

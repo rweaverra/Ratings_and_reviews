@@ -25,17 +25,22 @@ function App() {
 
   function getRatings() {
     axios.get('http://52.26.193.201:3000/reviews/4/meta')
-    .then((response) => {
-      setRatingsLoaded(true);
-      setRatings(response.data);
-    });
+      .then((response) => {
+        setRatingsLoaded(true);
+        setRatings(response.data);
+      });
+  }
+
+  function deleteReview(id) {
+
+    const filteredReviews = reviews.filter((review, id) => { review.review_id === id; });
+    setReviews([filteredReviews]);
 
   }
 
   useEffect(() => {
     getReviews();
     getRatings();
-
   }, []);
 
   if (!reviewsLoaded || !ratingsLoaded) {
@@ -49,7 +54,7 @@ function App() {
           <Ratings ratings={ratings} />
         </Col>
         <Col sm={5}>
-          <ReviewList reviews={reviews} getReviews={getReviews} />
+          <ReviewList reviews={reviews} getReviews={getReviews} deleteReview={deleteReview} />
         </Col>
         <Col sm={2} />
       </Row>

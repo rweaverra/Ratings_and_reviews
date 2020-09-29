@@ -5,6 +5,19 @@ import {
 import axios from 'axios';
 
 function FormInputs(props) {
+  const [state, setState] = React.useState({
+    rating: '',
+    summary: '',
+    body: '',
+    recommend: '',
+    name: '',
+    email: '',
+    characteristics: {
+      14: '',
+      16: '',
+    },
+ });
+
   function submitForm(event) {
     event.preventDefault();
     props.onHide();
@@ -17,37 +30,20 @@ function FormInputs(props) {
         body: state.body,
         recommend: true,
         name: state.name,
-        email: state.email, //hard coded for ease of use
+        email: state.email, // hard coded for ease of use
         characteristics: {
-          '14': state.characteristics['14'],
-          '16': state.characteristics['16']
+          14: state.characteristics['14'],
+          16: state.characteristics['16'],
         },
-      }
+      },
     })
-      .then((response) => {
-        console.log(props.getReviews);
+      .then(() => {
         props.getReviews();
       })
       .catch((error) => {
         console.log(error);
       });
-
   }
-
-  // handle multiple inputs
-  const [state, setState] = React.useState({
-    rating: '',
-    summary: '',
-    body: '',
-    recommend: '',
-    name: '',
-    email: '',
-    characteristics: {
-      14: '',
-      16: '',
-    },
-
-  });
 
   function handleChange(event) {
     const { value } = event.target;

@@ -5,7 +5,6 @@ function Helpful(props) {
   const [helpful, setHelpful] = useState(false);
   const [totalHelp, setTotalHelp] = useState(props.review.helpfulness)
 
-  console.log(props.review);
   function addHelpful(event) {
     setHelpful(!helpful);
     axios({
@@ -15,7 +14,8 @@ function Helpful(props) {
       .then((response) => {
         setTotalHelp(totalHelp + 1);
         console.log(response);
-      });
+      })
+
   }
 
   return (
