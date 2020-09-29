@@ -16,7 +16,7 @@ function App() {
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get('http://52.26.193.201:3000/reviews/1/list')
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=30')
       .then((response) => {
         setReviewsLoaded(true);
         setReviews(response.data.results);
