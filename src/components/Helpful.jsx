@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 function Helpful(props) {
   const [helpful, setHelpful] = useState(false);
@@ -20,7 +21,7 @@ function Helpful(props) {
 
   return (
     <div>
-      <button type="button" disabled={helpful} onClick={addHelpful}>Helpful {totalHelp} </button>
+      <Button color="primary" type="button" disabled={helpful} onClick={addHelpful}>Helpful {totalHelp} </Button>
     </div>
 
   );

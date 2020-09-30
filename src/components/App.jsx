@@ -36,7 +36,7 @@ function App() {
      console.log(review);
     axios({
       method: 'put',
-      url: `http://52.26.193.201:3000/reviews/report/${id}`
+      url: `http://52.26.193.201:3000/reviews/report/${review}`
     })
     .then((response) => {
       getReviews();

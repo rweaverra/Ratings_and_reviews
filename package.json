@@ -22,6 +22,7 @@
     "url": "https://github.com/RAJE-tech/related-items/issues"
   },
   "homepage": "https://github.com/RAJE-tech/related-items#readme",
+
   "dependencies": {
     "axios": "^0.20.0",
     "babel-jest": "^26.3.0",

@@ -1,6 +1,10 @@
 import React from 'react';
-import Helpful from './Helpful.jsx';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import ReportButton from './ReportButton.jsx';
+import Helpful from './Helpful.jsx';
+import StarRating from './StarRating.jsx';
 
 function Review(props) {
   if (!props.review) {
@@ -8,6 +12,7 @@ function Review(props) {
   }
   return (
     <div>
+      <StarRating />
       <h3>{props.review.summary}</h3>
       <div>
         rating:
@@ -17,9 +22,18 @@ function Review(props) {
         Summary:
         {props.review.body}
       </div>
-      <div> <Helpful review={props.review} getReviews={props.getReviews}/>      <ReportButton  review={props.review} getReviews={props.getReviews} deleteReview={props.deleteReview}/>
-
-       </div>
+      <div>
+        <Container>
+          <Row>
+            <Col>
+              <Helpful review={props.review} getReviews={props.getReviews} />
+              </Col>
+            <Col>
+              <ReportButton review={props.review} getReviews={props.getReviews} deleteReview={props.deleteReview} />
+              </Col>
+            </Row>
+        </Container>
+      </div>
     </div>
   );
 }

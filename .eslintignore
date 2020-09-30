@@ -4,4 +4,5 @@ bundle.js,
 CheckboxWithLabel.test.js,
 ReviewList.jsx,
 Helpful.jsx,
-ReportButton.jsx
+ReportButton.jsx,
+Review.jsx
