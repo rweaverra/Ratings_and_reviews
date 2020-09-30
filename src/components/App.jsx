@@ -12,26 +12,32 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [ratings, setRatings] = useState({});
 
+
   function getNewestReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=100')
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=4')
       .then((response) => {
-        console.log(response);
+        console.log('inside get Newest Reviews api response', reviews)
         setReviews(response.data.results);
+
 
       });
   }
 
   function getHelpfulReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=helpful&count=100')
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=helpful&count=4')
       .then((response) => {
+        console.log('inside get Helpul Reviews api response', reviews)
         setReviews(response.data.results);
+
       });
   }
 
   function getRelevantReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=relevant&count=100')
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=relevant&count=4')
       .then((response) => {
+        console.log('inside get Relevant Reviews api response', reviews)
         setReviews(response.data.results);
+
       });
   }
 
@@ -41,6 +47,7 @@ function App() {
     axios.get('http://52.26.193.201:3000/reviews/1/meta')
       .then((response) => {
         setRatings(response.data);
+
       });
   }
 
@@ -58,7 +65,7 @@ function App() {
       });
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     getNewestReviews();
     getRatings();
   }, []);

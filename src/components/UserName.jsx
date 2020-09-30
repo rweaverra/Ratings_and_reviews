@@ -11,10 +11,10 @@ function UserName({ review }) {
 
   const listedDate = `${monthWord} ${day}, ${year}`;
 
+
   return (
     <div>
       {review.reviewer_name}
-      ,
       {' '}
       {listedDate}
     </div>

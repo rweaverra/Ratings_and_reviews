@@ -41,6 +41,7 @@ function ReviewList(props) {
           getNewestReviews={props.getNewestReviews}
           getHelpfulReviews={props.getHelpfulReviews}
           getRelevantReviews={props.getRelevantReviews}
+          ratings={props.ratings}
         />
       </Row>
       <Row>
