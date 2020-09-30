@@ -24,7 +24,7 @@ function App() {
   }
 
   function getRatings() {
-    axios.get('http://52.26.193.201:3000/reviews/4/meta')
+    axios.get('http://52.26.193.201:3000/reviews/1/meta')
       .then((response) => {
         setRatingsLoaded(true);
         setRatings(response.data);
@@ -32,17 +32,16 @@ function App() {
   }
 
   function deleteReview(id) {
-     var review = id.target.name;
-     console.log(review);
+    const review = id.target.name;
+    console.log(review);
     axios({
       method: 'put',
-      url: `http://52.26.193.201:3000/reviews/report/${review}`
+      url: `http://52.26.193.201:3000/reviews/report/${review}`,
     })
-    .then((response) => {
-      getReviews();
-      console.log(response);
-    })
-
+      .then((response) => {
+        getReviews();
+        console.log(response);
+      });
   }
 
   useEffect(() => {
@@ -61,7 +60,12 @@ function App() {
           <Ratings ratings={ratings} />
         </Col>
         <Col sm={5}>
-          <ReviewList reviews={reviews} getReviews={getReviews} deleteReview={deleteReview} />
+          <ReviewList
+            reviews={reviews}
+            getReviews={getReviews}
+            deleteReview={deleteReview}
+            ratings={ratings}
+          />
         </Col>
         <Col sm={2} />
       </Row>

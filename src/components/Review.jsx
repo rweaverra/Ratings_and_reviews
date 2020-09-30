@@ -1,7 +1,5 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { Container, Col, Row } from 'react-bootstrap';
 import ReportButton from './ReportButton.jsx';
 import Helpful from './Helpful.jsx';
 import StarRating from './StarRating.jsx';
@@ -13,7 +11,7 @@ function Review(props) {
   return (
     <Container>
     <Row>
-      <StarRating />
+      <StarRating ratings={props.ratings}/>
       </Row>
       <Row>
         <h3>{props.review.summary}</h3>

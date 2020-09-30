@@ -22,7 +22,7 @@ function ReviewList(props) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getReviews={props.getReviews} deleteReview={props.deleteReview} />);
+  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getReviews={props.getReviews} deleteReview={props.deleteReview} ratings={props.ratings}/>);
 
   return (
     <Container>
