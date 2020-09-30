@@ -32,9 +32,16 @@ function App() {
   }
 
   function deleteReview(id) {
-
-    const filteredReviews = reviews.filter((review, id) => { review.review_id === id; });
-    setReviews([filteredReviews]);
+     var review = id.target.name;
+     console.log(review);
+    axios({
+      method: 'put',
+      url: `http://52.26.193.201:3000/reviews/report/${id}`
+    })
+    .then((response) => {
+      getReviews();
+      console.log(response);
+    })
 
   }
 
