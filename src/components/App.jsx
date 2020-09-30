@@ -55,11 +55,11 @@ function App() {
   return (
     <Container>
       <Row>
-        <Col sm={2} />
-        <Col sm={3}>
+        <Col sm={1} />
+        <Col sm={4}>
           <Ratings ratings={ratings} />
         </Col>
-        <Col sm={5}>
+        <Col sm={6}>
           <ReviewList
             reviews={reviews}
             getReviews={getReviews}
@@ -67,7 +67,7 @@ function App() {
             ratings={ratings}
           />
         </Col>
-        <Col sm={2} />
+        <Col sm={1} />
       </Row>
     </Container>
   );

@@ -22,7 +22,7 @@ function StarRating({ ratings }) {
 
   const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
   const averageStarRating = weightedTotal() / totalStars;
-  console.log(averageStarRating);
+
 
   return (
 

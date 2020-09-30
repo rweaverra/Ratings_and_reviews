@@ -3,6 +3,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import ReportButton from './ReportButton.jsx';
 import Helpful from './Helpful.jsx';
 import StarRating from './StarRating.jsx';
+import UserName from "./UserName.jsx";
 
 function Review(props) {
   if (!props.review) {
@@ -11,7 +12,12 @@ function Review(props) {
   return (
     <Container>
     <Row>
-      <StarRating ratings={props.ratings}/>
+      <Col>
+        <StarRating ratings={props.ratings}/>
+      </Col>
+      <Col>
+      <UserName review={props.review}/>
+      </Col>
       </Row>
       <Row>
         <h3>{props.review.summary}</h3>
