@@ -5,4 +5,5 @@ CheckboxWithLabel.test.js,
 ReviewList.jsx,
 Helpful.jsx,
 ReportButton.jsx,
-Review.jsx
+Review.jsx,
+StarRating.jsx

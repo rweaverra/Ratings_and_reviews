@@ -3,14 +3,25 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
 function StarRating({ ratings }) {
-  if(!ratings.ratings) {
+  if (!ratings.ratings) {
     return <div />;
   }
- console.log(ratings)
+
+
+
+  //Weighted Average Function
+  const allRatings = ratings.ratings;
+  var weightedTotal = function () {
+   let sum = 0;
+    for (let key in allRatings) {
+      var numberedKey = parseInt(key);
+      sum += (numberedKey * allRatings[key]);
+    }
+    return sum;
+  };
+
   const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
-  console.log('total stars', totalStars);
-  const numberOfReviews = Object.keys(ratings.ratings).length;
-  const averageStarRating = totalStars / numberOfReviews;
+  const averageStarRating = weightedTotal() / totalStars;
   console.log(averageStarRating);
 
   return (
