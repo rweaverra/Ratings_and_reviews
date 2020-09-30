@@ -11,20 +11,22 @@ function Review(props) {
     return <div />;
   }
   return (
-    <div>
+    <Container>
+    <Row>
       <StarRating />
-      <h3>{props.review.summary}</h3>
-      <div>
+      </Row>
+      <Row>
+        <h3>{props.review.summary}</h3>
+      </Row>
+      <Row>
         rating:
         {props.review.rating}
-      </div>
-      <div>
+        </Row>
+      <Row>
         Summary:
         {props.review.body}
-      </div>
-      <div>
-        <Container>
-          <Row>
+        </Row>
+        <Row>
             <Col>
               <Helpful review={props.review} getReviews={props.getReviews} />
               </Col>
@@ -33,8 +35,8 @@ function Review(props) {
               </Col>
             </Row>
         </Container>
-      </div>
-    </div>
+
+
   );
 }
 

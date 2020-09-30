@@ -1,7 +1,7 @@
 {
   "name": "Reviews",
   "version": "1.0.0",
-  "description": "Related Items & Comparison module for BRAC Retail Model",
+  "description": "Ratings and Reviews module for BRAC Retail Model",
   "main": "index.jsx",
   "jest": {
     "setupFilesAfterEnv": [
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RAJE-tech/related-items.git"
+    "url": "git+https://github.com/RAJE-tech/Reviews.git"
   },
   "author": "Ryan Weaver",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RAJE-tech/related-items/issues"
+    "url": "https://github.com/RAJE-tech/Reviews/issues"
   },
-  "homepage": "https://github.com/RAJE-tech/related-items#readme",
+  "homepage": "https://github.com/RAJE-tech/Reviews#readme",
 
   "dependencies": {
     "axios": "^0.20.0",

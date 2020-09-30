@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Container, Col, Row } from 'react-bootstrap';
 import Review from './Review.jsx';
 import FormModal from './FormModal.jsx';
 
@@ -21,22 +22,28 @@ function ReviewList(props) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getReviews={props.getReviews} deleteReview={props.deleteReview}/>);
+  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getReviews={props.getReviews} deleteReview={props.deleteReview} />);
 
   return (
-    <div>
-      <h2>Reviews</h2>
-      Show total reviews sorted by "relevace, newest, etc"
-      <div>
+    <Container>
+      <Row>
+        <h2>Reviews</h2>
+      </Row>
+      <Row>
+        Show total reviews sorted by "relevace, newest, etc"
+      </Row>
+      <Row>
         {listReviews}
-      </div>
-      <button onClick={addReviews}>More Reviews Button</button>
-      {' '}
-      ||
-      <button onClick={handleShow}>Add a review</button>
-      <div />
+      </Row>
+      <Row>
+        <button onClick={addReviews}>More Reviews Button</button>
+        {' '}
+        ||
+        <button onClick={handleShow}>Add a review</button>
+
+      </Row>
       <FormModal show={show} onHide={handleClose} getReviews={props.getReviews} />
-    </div>
+    </Container>
   );
 }
 
