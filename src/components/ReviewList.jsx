@@ -37,7 +37,11 @@ function ReviewList(props) {
         <h2>Reviews</h2>
       </Row>
       <Row>
-    <SortReviews />
+        <SortReviews
+          getNewestReviews={props.getNewestReviews}
+          getHelpfulReviews={props.getHelpfulReviews}
+          getRelevantReviews={props.getRelevantReviews}
+        />
       </Row>
       <Row>
         {listReviews}

@@ -19,11 +19,27 @@ function SortReviews(props) {
 
   const [sortedBy, setSortedBy] = useState('relevance');
   const classes = useStyles();
-
   const handleChange = (event) => {
-    console.log('hello');
+
     setSortedBy(event.target.value);
+    if(sortedBy === 'newest'){
+      // console.log('sortedbyequalsnewest');
+      props.getNewestReviews();
+    }
+
+    if(sortedBy === 'relevance'){
+      // console.log('sortedbyequalsrelevance');
+      props.getRelevantReviews();
+    }
+
+    if(sortedBy === 'helpfulness'){
+      // console.log('sortedbyequalsHelpfulness');
+      props.getHelpfulReviews();
+    }
+
   };
+
+
   return (
 
     <FormControl className={classes.formControl}>

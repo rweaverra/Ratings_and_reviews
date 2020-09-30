@@ -15,7 +15,9 @@ function App() {
   function getNewestReviews() {
     axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=100')
       .then((response) => {
+        console.log(response);
         setReviews(response.data.results);
+
       });
   }
 
