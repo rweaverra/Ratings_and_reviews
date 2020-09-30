@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import Review from './Review.jsx';
 import FormModal from './FormModal.jsx';
+import SortReviews from './SortReviews.jsx';
 
 function ReviewList(props) {
   const first = props.reviews[0];
@@ -22,7 +23,13 @@ function ReviewList(props) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getReviews={props.getReviews} deleteReview={props.deleteReview} ratings={props.ratings}/>);
+  // REVIEW SELECTION===================
+  const handleReviewSort = (event) => {
+    // call the api get request
+    console.log('inside handleReviewSort');
+  };
+
+  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getNewestReviews={props.getNewestReviews} deleteReview={props.deleteReview} ratings={props.ratings} />);
 
   return (
     <Container>
@@ -30,7 +37,7 @@ function ReviewList(props) {
         <h2>Reviews</h2>
       </Row>
       <Row>
-        Show total reviews sorted by "relevace, newest, etc"
+    <SortReviews />
       </Row>
       <Row>
         {listReviews}
@@ -42,7 +49,7 @@ function ReviewList(props) {
         <button onClick={handleShow}>Add a review</button>
 
       </Row>
-      <FormModal show={show} onHide={handleClose} getReviews={props.getReviews} />
+      <FormModal show={show} onHide={handleClose} getNewestReviews={props.getNewestReviews} />
     </Container>
   );
 }

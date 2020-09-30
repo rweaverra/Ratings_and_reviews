@@ -11,25 +11,37 @@ import { exampleReview, exampleRating } from './exampleReview.js';
 function App() {
   const [reviews, setReviews] = useState([]);
   const [ratings, setRatings] = useState({});
-  const [error, setError] = useState(null);
-  const [reviewsLoaded, setReviewsLoaded] = useState(false);
-  const [ratingsLoaded, setRatingsLoaded] = useState(false);
 
-  function getReviews() {
+  function getNewestReviews() {
     axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=100')
       .then((response) => {
-        setReviewsLoaded(true);
         setReviews(response.data.results);
       });
   }
 
+  function getHelpfulReviews() {
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=helpful&count=100')
+      .then((response) => {
+        setReviews(response.data.results);
+      });
+  }
+
+  function getRelevantReviews() {
+    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=relevant&count=100')
+      .then((response) => {
+        setReviews(response.data.results);
+      });
+  }
+
+
+
   function getRatings() {
     axios.get('http://52.26.193.201:3000/reviews/1/meta')
       .then((response) => {
-        setRatingsLoaded(true);
         setRatings(response.data);
       });
   }
+
 
   function deleteReview(id) {
     const review = id.target.name;
@@ -39,19 +51,20 @@ function App() {
       url: `http://52.26.193.201:3000/reviews/report/${review}`,
     })
       .then((response) => {
-        getReviews();
+        getNewestReviews();
         console.log(response);
       });
   }
 
   useEffect(() => {
-    getReviews();
+    getNewestReviews();
     getRatings();
   }, []);
 
-  if (!reviewsLoaded || !ratingsLoaded) {
-    return <div>Loading...</div>;
+  if (!ratings.ratings) {
+    return <div />;
   }
+
   return (
     <Container>
       <Row>
@@ -62,7 +75,9 @@ function App() {
         <Col sm={6}>
           <ReviewList
             reviews={reviews}
-            getReviews={getReviews}
+            getNewestReviews={getNewestReviews}
+            getHelpfulReviews={getHelpfulReviews}
+            getRelevantReviews={getRelevantReviews}
             deleteReview={deleteReview}
             ratings={ratings}
           />

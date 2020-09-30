@@ -14,7 +14,7 @@ function FormModal(props) {
           </Modal.Header>
 
           <Modal.Body>
-            <FormInputs onHide={props.onHide} getReviews={props.getReviews}/>
+            <FormInputs onHide={props.onHide} getReviews={props.getNewestReviews}/>
           </Modal.Body>
           <Modal.Footer />
         </Modal.Dialog>

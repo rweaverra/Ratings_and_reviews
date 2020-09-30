@@ -32,10 +32,10 @@ function Review(props) {
         </Row>
         <Row>
             <Col>
-              <Helpful review={props.review} getReviews={props.getReviews} />
+              <Helpful review={props.review} getReviews={props.getNewestReviews} />
               </Col>
             <Col>
-              <ReportButton review={props.review} getReviews={props.getReviews} deleteReview={props.deleteReview} />
+              <ReportButton review={props.review} getReviews={props.getNewestReviews} deleteReview={props.deleteReview} />
               </Col>
             </Row>
         </Container>
