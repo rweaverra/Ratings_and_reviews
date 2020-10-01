@@ -3,41 +3,34 @@ import { Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 import Review from './Review.jsx';
 import FormModal from './FormModal.jsx';
-import SortReviews from './SortReviews.jsx';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 function ReviewList({ratings, productId}) {
 
   const [reviews, setReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState([]);
-  const [counter, setCounter] = useState(2);
-  const [searchType, setSearchType] =useState('');
+  const [count, setCount] = useState(2)
+  const [sortedBy, setSortedBy] = useState('helpful');
+  const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
 
-  function getNewestReviews() {
-    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=newest&count=30`)
-      .then((response) => {
-        setReviews(response.data.results);
-        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
-        console.log('inside get Newest Reviews api response', reviews);
-      });
+
+  function loadMoreReviews() {
+    setCount(count + 2);
   }
 
-  function getHelpfulReviews() {
-    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=helpful&count=30`)
-      .then((response) => {
-        setReviews(response.data.results);
-        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
-        console.log('inside get Helpul Reviews api response', reviews);
-      });
+  const changeSortingType = (event) => {
+    console.log('insidehandle change');
+    var searchType = event.target.value;
+    setSortedBy(searchType);
+      console.log(sortedBy);
+
   }
 
-  function getRelevantReviews() {
-    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=relevant&count=30`)
-      .then((response) => {
-        setReviews(response.data.results);
-        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
-        console.log('inside get Relevant Reviews api response', reviews);
-      });
-  }
 
   function deleteReview(id) {
     const review = id.target.name;
@@ -53,16 +46,30 @@ function ReviewList({ratings, productId}) {
   }
 
   useEffect(() => {
-   getNewestReviews();
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=${count}`)
+    .then((response) => {
+      var results = response.data.results
+      console.log(results);
+      setReviews(response.data.results);
+    });
 
-  }, []);
+  }, [count, sortedBy]);
 
-  function addReviews() {
-    const nextReviews = reviews.slice(counter, counter + 2);
-    const combineReviews = displayedReviews.concat(nextReviews);
-    setDisplayedReviews(combineReviews);
-    setCounter(counter + 2);
-  }
+
+//SORTING STYLING========== can probably figure out a way to put into css
+  const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
+  const classes = useStyles();
+
+
+
 
   // Modal===========
   const [show, setShow] = useState(false);
@@ -80,23 +87,32 @@ function ReviewList({ratings, productId}) {
         <h2>Reviews</h2>
       </Row>
       <Row>
-        <SortReviews
-          getNewestReviews={getNewestReviews}
-          getHelpfulReviews={getHelpfulReviews}
-          getRelevantReviews={getRelevantReviews}
-          ratings={ratings}
-        />
+      <FormControl className={classes.formControl}>
+      <InputLabel>{totalStars} reviews,  Sorted By</InputLabel>
+      <Select
+        onChange={changeSortingType}
+        value={sortedBy}
+      >
+        <MenuItem value="relevant">Relevance</MenuItem>
+        <MenuItem value="helpful">Helpfulness</MenuItem>
+        <MenuItem value="newest">Newest</MenuItem>
+      </Select>
+    </FormControl>
       </Row>
-      {reviews.map((review, i) => <Review key={`${i}review`} review={review} getNewestReviews={getNewestReviews} deleteReview={deleteReview} ratings={ratings} />)}
+      {reviews.map((review, i) =>
+      <Review key={`${i}review`}
+        review={review}
+        deleteReview={deleteReview}
+        ratings={ratings} />)}
       <Row />
       <Row>
-        <button onClick={addReviews}>More Reviews Button</button>
+        <button onClick={loadMoreReviews}>More Reviews Button</button>
         {' '}
         ||
         <button onClick={handleShow}>Add a review</button>
 
       </Row>
-      <FormModal show={show} onHide={handleClose} getNewestReviews={getNewestReviews} />
+      <FormModal show={show} onHide={handleClose}  />
     </Container>
   );
 }
