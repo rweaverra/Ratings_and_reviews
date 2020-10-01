@@ -16,7 +16,7 @@ function Review(props) {
         <StarRating ratings={props.ratings}/>
       </Col>
       <Col>
-      <UserName review={props.review} ratings={props.ratings}/>
+      <UserName review={props.review} />
       </Col>
       </Row>
       <Row>

@@ -8,31 +8,34 @@ import SortReviews from './SortReviews.jsx';
 function ReviewList({ratings, productId}) {
 
   const [reviews, setReviews] = useState([]);
-  const first = reviews[1];
-  const [displayedReviews, setDisplayedReviews] = useState([first]);
+  const [displayedReviews, setDisplayedReviews] = useState([]);
   const [counter, setCounter] = useState(2);
+  const [searchType, setSearchType] =useState('');
 
   function getNewestReviews() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=newest&count=30`)
       .then((response) => {
-        console.log('inside get Newest Reviews api response', reviews);
         setReviews(response.data.results);
+        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
+        console.log('inside get Newest Reviews api response', reviews);
       });
   }
 
   function getHelpfulReviews() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=helpful&count=30`)
       .then((response) => {
-        console.log('inside get Helpul Reviews api response', reviews);
         setReviews(response.data.results);
+        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
+        console.log('inside get Helpul Reviews api response', reviews);
       });
   }
 
   function getRelevantReviews() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=relevant&count=30`)
       .then((response) => {
-        console.log('inside get Relevant Reviews api response', reviews);
         setReviews(response.data.results);
+        setDisplayedReviews([response.data.results[0], response.data.results[1]]);
+        console.log('inside get Relevant Reviews api response', reviews);
       });
   }
 
@@ -50,7 +53,8 @@ function ReviewList({ratings, productId}) {
   }
 
   useEffect(() => {
-    getNewestReviews();
+   getNewestReviews();
+
   }, []);
 
   function addReviews() {
