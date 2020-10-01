@@ -13,7 +13,6 @@ import Select from '@material-ui/core/Select';
 function ReviewList({ratings, productId}) {
 
   const [reviews, setReviews] = useState([]);
-  const [displayedReviews, setDisplayedReviews] = useState([]);
   const [count, setCount] = useState(2)
   const [sortedBy, setSortedBy] = useState('helpful');
   const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
@@ -32,18 +31,6 @@ function ReviewList({ratings, productId}) {
   }
 
 
-  function deleteReview(id) {
-    const review = id.target.name;
-    console.log(review);
-    axios({
-      method: 'put',
-      url: `http://52.26.193.201:3000/reviews/report/${review}`,
-    })
-      .then((response) => {
-        getNewestReviews();
-        console.log(response);
-      });
-  }
 
   useEffect(() => {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=${count}`)
@@ -102,7 +89,6 @@ function ReviewList({ratings, productId}) {
       {reviews.map((review, i) =>
       <Review key={`${i}review`}
         review={review}
-        deleteReview={deleteReview}
         ratings={ratings} />)}
       <Row />
       <Row>
