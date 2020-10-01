@@ -9,64 +9,17 @@ import ReviewList from './ReviewList.jsx';
 import { exampleReview, exampleRating } from './exampleReview.js';
 
 function App() {
-  const [reviews, setReviews] = useState([]);
   const [ratings, setRatings] = useState({});
-
-
-  function getNewestReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=newest&count=4')
-      .then((response) => {
-        console.log('inside get Newest Reviews api response', reviews)
-        setReviews(response.data.results);
-
-
-      });
-  }
-
-  function getHelpfulReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=helpful&count=4')
-      .then((response) => {
-        console.log('inside get Helpul Reviews api response', reviews)
-        setReviews(response.data.results);
-
-      });
-  }
-
-  function getRelevantReviews() {
-    axios.get('http://52.26.193.201:3000/reviews/1/list?sort=relevant&count=4')
-      .then((response) => {
-        console.log('inside get Relevant Reviews api response', reviews)
-        setReviews(response.data.results);
-
-      });
-  }
-
-
+  const productId = '1';
 
   function getRatings() {
-    axios.get('http://52.26.193.201:3000/reviews/1/meta')
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
       .then((response) => {
         setRatings(response.data);
-
       });
   }
 
-
-  function deleteReview(id) {
-    const review = id.target.name;
-    console.log(review);
-    axios({
-      method: 'put',
-      url: `http://52.26.193.201:3000/reviews/report/${review}`,
-    })
-      .then((response) => {
-        getNewestReviews();
-        console.log(response);
-      });
-  }
-
-  React.useEffect(() => {
-    getNewestReviews();
+  useEffect(() => {
     getRatings();
   }, []);
 
@@ -79,16 +32,15 @@ function App() {
       <Row>
         <Col sm={1} />
         <Col sm={4}>
-          <Ratings ratings={ratings} />
+          <Ratings
+            ratings={ratings}
+            productId={productId}
+          />
         </Col>
         <Col sm={6}>
           <ReviewList
-            reviews={reviews}
-            getNewestReviews={getNewestReviews}
-            getHelpfulReviews={getHelpfulReviews}
-            getRelevantReviews={getRelevantReviews}
-            deleteReview={deleteReview}
             ratings={ratings}
+            productId={productId}
           />
         </Col>
         <Col sm={1} />

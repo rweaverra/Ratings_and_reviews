@@ -1,18 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
+import axios from 'axios';
 import Review from './Review.jsx';
 import FormModal from './FormModal.jsx';
 import SortReviews from './SortReviews.jsx';
 
-function ReviewList(props) {
-  const first = props.reviews[0];
-  const second = props.reviews[1];
+function ReviewList({ratings, productId}) {
 
-  const [displayedReviews, setDisplayedReviews] = useState([first, second]);
+  const [reviews, setReviews] = useState([]);
+  const first = reviews[1];
+  const [displayedReviews, setDisplayedReviews] = useState([first]);
   const [counter, setCounter] = useState(2);
 
+  function getNewestReviews() {
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=newest&count=30`)
+      .then((response) => {
+        console.log('inside get Newest Reviews api response', reviews);
+        setReviews(response.data.results);
+      });
+  }
+
+  function getHelpfulReviews() {
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=helpful&count=30`)
+      .then((response) => {
+        console.log('inside get Helpul Reviews api response', reviews);
+        setReviews(response.data.results);
+      });
+  }
+
+  function getRelevantReviews() {
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=relevant&count=30`)
+      .then((response) => {
+        console.log('inside get Relevant Reviews api response', reviews);
+        setReviews(response.data.results);
+      });
+  }
+
+  function deleteReview(id) {
+    const review = id.target.name;
+    console.log(review);
+    axios({
+      method: 'put',
+      url: `http://52.26.193.201:3000/reviews/report/${review}`,
+    })
+      .then((response) => {
+        getNewestReviews();
+        console.log(response);
+      });
+  }
+
+  useEffect(() => {
+    getNewestReviews();
+  }, []);
+
   function addReviews() {
-    const nextReviews = props.reviews.slice(counter, counter + 2);
+    const nextReviews = reviews.slice(counter, counter + 2);
     const combineReviews = displayedReviews.concat(nextReviews);
     setDisplayedReviews(combineReviews);
     setCounter(counter + 2);
@@ -23,13 +65,10 @@ function ReviewList(props) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  // REVIEW SELECTION===================
-  const handleReviewSort = (event) => {
-    // call the api get request
-    console.log('inside handleReviewSort');
-  };
 
-  const listReviews = displayedReviews.map((review, i) => <Review key={`${i}review`} review={review} getNewestReviews={props.getNewestReviews} deleteReview={props.deleteReview} ratings={props.ratings} />);
+  if(reviews.length === 0) {
+    return <div></div>
+  }
 
   return (
     <Container>
@@ -38,15 +77,14 @@ function ReviewList(props) {
       </Row>
       <Row>
         <SortReviews
-          getNewestReviews={props.getNewestReviews}
-          getHelpfulReviews={props.getHelpfulReviews}
-          getRelevantReviews={props.getRelevantReviews}
-          ratings={props.ratings}
+          getNewestReviews={getNewestReviews}
+          getHelpfulReviews={getHelpfulReviews}
+          getRelevantReviews={getRelevantReviews}
+          ratings={ratings}
         />
       </Row>
-      <Row>
-        {listReviews}
-      </Row>
+      {reviews.map((review, i) => <Review key={`${i}review`} review={review} getNewestReviews={getNewestReviews} deleteReview={deleteReview} ratings={ratings} />)}
+      <Row />
       <Row>
         <button onClick={addReviews}>More Reviews Button</button>
         {' '}
@@ -54,7 +92,7 @@ function ReviewList(props) {
         <button onClick={handleShow}>Add a review</button>
 
       </Row>
-      <FormModal show={show} onHide={handleClose} getNewestReviews={props.getNewestReviews} />
+      <FormModal show={show} onHide={handleClose} getNewestReviews={getNewestReviews} />
     </Container>
   );
 }

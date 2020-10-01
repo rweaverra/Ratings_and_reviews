@@ -2,7 +2,7 @@ webpack.config.js,
 .eslintrc.js,
 bundle.js,
 CheckboxWithLabel.test.js,
-ReviewList.jsx,
+ReviewList.jsx
 Helpful.jsx,
 ReportButton.jsx,
 Review.jsx,
