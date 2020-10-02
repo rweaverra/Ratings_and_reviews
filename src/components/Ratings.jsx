@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
+import StarRating from './StarRating.jsx'
 
 function Ratings({ ratings }) {
   if (!ratings.ratings) {
     return <div />;
   }
-
+console.log(ratings.ratings)
   return (
     <div>
       <h2>Ratings</h2>
+      <StarRating ratings={ratings}/>
       <div>
         <ul>
           <li>

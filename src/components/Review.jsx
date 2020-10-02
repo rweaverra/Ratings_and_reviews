@@ -4,6 +4,8 @@ import ReportButton from './ReportButton.jsx';
 import Helpful from './Helpful.jsx';
 import StarRating from './StarRating.jsx';
 import UserName from "./UserName.jsx";
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 function Review(props) {
   if (!props.review) {
@@ -13,7 +15,9 @@ function Review(props) {
     <Container>
     <Row>
       <Col>
-        <StarRating ratings={props.ratings}/>
+      <Box component="fieldset" mb={1} borderColor="transparent">
+      <Rating name="read-only" value={props.review.rating} precision={0.25} readOnly />
+    </Box>
       </Col>
       <Col>
       <UserName review={props.review} />
@@ -23,8 +27,8 @@ function Review(props) {
         <h3>{props.review.summary}</h3>
       </Row>
       <Row>
-        rating:
-        {props.review.rating}
+        response
+        {props.review.response}
         </Row>
       <Row>
         Summary:

@@ -10,12 +10,14 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+
 function ReviewList({ratings, productId}) {
 
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(2)
   const [sortedBy, setSortedBy] = useState('helpful');
   const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
+  const [starReviews, setStarReviews] = useState([]);
 
 
   function loadMoreReviews() {
@@ -32,11 +34,26 @@ function ReviewList({ratings, productId}) {
 
 
 
+
+  function sortStarRatings(star) {
+
+    var result = reviews.filter((rating) => {
+      return rating['rating'] === 5
+   }
+     );
+
+     setReviews(result);
+
+     console.log('result of sortStarRating', result);
+  }
+
+
+//function to reorganize the reviews array by star rating and then setReviews??
+
   useEffect(() => {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=${count}`)
     .then((response) => {
       var results = response.data.results
-      console.log(results);
       setReviews(response.data.results);
     });
 
@@ -68,10 +85,13 @@ function ReviewList({ratings, productId}) {
     return <div></div>
   }
 
+
+
   return (
     <Container>
       <Row>
         <h2>Reviews</h2>
+        <button  onClick={sortStarRatings}>star Reviews</button>
       </Row>
       <Row>
       <FormControl className={classes.formControl}>
