@@ -42,7 +42,7 @@ function App() {
             ratings={ratings}
             productId={productId}
           />
-        </Col>
+        </Col>a
         <Col sm={1} />
       </Row>
     </Container>
