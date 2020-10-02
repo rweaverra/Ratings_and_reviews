@@ -1,4 +1,8 @@
-.test{
-  background-color: red;
-  height: 500px;
+
+
+.raw-progressbar{
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+  width: 200px;
 }

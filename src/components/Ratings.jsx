@@ -1,10 +1,18 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
-import StarRating from './StarRating.jsx'
+import { Container, Col, Row } from 'react-bootstrap';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import StarRating from './StarRating.jsx';
+import RatingsBar from './RatingsBar.jsx';
 
-function Ratings({productId, sortStarRatings}) {
+function Ratings({ productId, sortStarRatings }) {
   const [ratings, setRatings] = useState({});
   const number = 'this string is to trigger the average inside of StarRating Component';
+
+  if(ratings.ratings) {
+  var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
+console.log('total ratings', totalRatings);
+  }
 
   function getRatings() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
@@ -13,54 +21,59 @@ function Ratings({productId, sortStarRatings}) {
       });
   }
 
-
   useEffect(() => {
     getRatings();
   }, []);
 
-
-
   if (!ratings.ratings) {
     return <div />;
   }
-console.log(ratings.ratings)
+  console.log(ratings.ratings);
   return (
-    <div>
+    <Container>
       <h2>Ratings</h2>
-      <StarRating ratings={ratings} number={number}/>
-      <div>
-        <ul>
-          <li>
-            <button onClick={sortStarRatings} value='1'>1 star ratings:</button>
-            {ratings.ratings['1']}
-          </li>
-          <li>
-          <button onClick={sortStarRatings} value='2'>2 star ratings:</button>
-            {ratings.ratings['2']}
-          </li>
-          <li>
-          <button onClick={sortStarRatings} value='3'>3 star ratings:</button>
-            {ratings.ratings['3']}
-          </li>
-          <li>
-          <button onClick={sortStarRatings} value='4'>4 star ratings:</button>
-            {ratings.ratings['4']}
-          </li>
-          <li>
-          <button onClick={sortStarRatings} value='5'>5 star ratings:</button>
-            {ratings.ratings['5']}
-          </li>
-        </ul>
-      </div>
-      <div>
-        Size 1-5:
-        {ratings.characteristics.Fit.value}
-      </div>
-      <div>
-        Comfort:
-        {ratings.characteristics.Comfort.value}
-      </div>
-    </div>
+      <StarRating ratings={ratings} number={number} />
+
+
+
+        <Row>
+
+          <button onClick={sortStarRatings} value="1">1 star ratings:</button>
+          {ratings.ratings['1']} <RatingsBar ratings={ratings.ratings['1']} totalRatings={totalRatings}/>
+
+        </Row>
+        <Row>
+          <button onClick={sortStarRatings} value="2">2 star ratings:</button>
+          {ratings.ratings['2']} <RatingsBar ratings={ratings.ratings['2']} totalRatings={totalRatings}/>
+        </Row>
+        <Row>
+          <button onClick={sortStarRatings} value="3">3 star ratings:</button>
+          {ratings.ratings['3']} <RatingsBar ratings={ratings.ratings['3']} totalRatings={totalRatings}/>
+        </Row>
+        <Row>
+          <button onClick={sortStarRatings} value="4">4 star ratings:</button>
+          {ratings.ratings['4']}  <RatingsBar ratings={ratings.ratings['4']} totalRatings={totalRatings}/>
+        </Row>
+        <Row>
+
+          <button onClick={sortStarRatings} value="5">5 star ratings:</button>
+          {ratings.ratings['5']}   <RatingsBar ratings={ratings.ratings['5']} totalRatings={totalRatings}/>
+
+        </Row>
+        <Row>
+
+        </Row>
+
+        <Row>
+          Size 1-5:
+          {ratings.characteristics.Fit.value}
+        </Row>
+        <Row>
+          Comfort:
+          {ratings.characteristics.Comfort.value}
+        </Row>
+      </Container>
+
   );
 }
 
