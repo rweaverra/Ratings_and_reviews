@@ -4,6 +4,7 @@ import StarRating from './StarRating.jsx'
 
 function Ratings({productId, sortStarRatings}) {
   const [ratings, setRatings] = useState({});
+  const number = 'this string is to trigger the average inside of StarRating Component';
 
   function getRatings() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
@@ -26,7 +27,7 @@ console.log(ratings.ratings)
   return (
     <div>
       <h2>Ratings</h2>
-      <StarRating ratings={ratings}/>
+      <StarRating ratings={ratings} number={number}/>
       <div>
         <ul>
           <li>

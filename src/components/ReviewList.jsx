@@ -44,7 +44,7 @@ function ReviewList({productId}) {
    }
      );
 
-     setReviews(result);
+     return (result.length > 0 ? setReviews(result) : null )
 
      console.log('result of sortStarRating', result);
   }
