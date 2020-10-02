@@ -11,26 +11,13 @@ import { exampleReview, exampleRating } from './exampleReview.js';
 const productId = 1;
 
 function App() {
-
-
-
-
-
-
   return (
     <Container>
-      <Row>
-        <Col sm={1} />
-        <Col sm={4}>
 
-        </Col>
-        <Col sm={6}>
-          <ReviewList
-            productId={productId}
-          />
-        </Col>
-        <Col sm={1} />
-      </Row>
+      <ReviewList
+        productId={productId}
+      />
+
     </Container>
   );
 }

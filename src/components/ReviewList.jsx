@@ -36,10 +36,11 @@ function ReviewList({productId}) {
 
 
 
-  function sortStarRatings(star) {
-
+  function sortStarRatings(event) {
+   console.log('current rating inside sort star ratings', typeof(event.target.value));
+   var currentStar = parseInt(event.target.value);
     var result = reviews.filter((rating) => {
-      return rating['rating'] === star
+      return rating['rating'] === currentStar;
    }
      );
 
@@ -90,17 +91,20 @@ function ReviewList({productId}) {
 
   return (
     <Container>
+
       <Row>
+      <Col xs={6}>
       <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
           />
-      </Row>
-      <Row>
+         </Col>
+
+      <Col xs={6}>
+
         <h2>Reviews</h2>
-        <button  onClick={sortStarRatings}>star Reviews</button>
-      </Row>
-      <Row>
+
+
       <FormControl className={classes.formControl}>
       <InputLabel>#### reviews,  Sorted By</InputLabel>
       <Select
@@ -112,19 +116,21 @@ function ReviewList({productId}) {
         <MenuItem value="newest">Newest</MenuItem>
       </Select>
     </FormControl>
-      </Row>
+
       {reviews.map((review, i) =>
       <Review key={`${i}review`}
         review={review} />)}
-      <Row />
-      <Row>
+
+
         <button onClick={loadMoreReviews}>More Reviews Button</button>
         {' '}
         ||
         <button onClick={handleShow}>Add a review</button>
 
-      </Row>
+
       <FormModal show={show} onHide={handleClose}  />
+      </Col>
+      </Row>
     </Container>
   );
 }
