@@ -2,7 +2,23 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx'
 
-function Ratings({ ratings }) {
+function Ratings({productId, sortStarRatings}) {
+  const [ratings, setRatings] = useState({});
+
+  function getRatings() {
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
+      .then((response) => {
+        setRatings(response.data);
+      });
+  }
+
+
+  useEffect(() => {
+    getRatings();
+  }, []);
+
+
+
   if (!ratings.ratings) {
     return <div />;
   }
@@ -14,7 +30,7 @@ console.log(ratings.ratings)
       <div>
         <ul>
           <li>
-            1 star ratings:
+            <button>1 star ratings:</button>
             {ratings.ratings['1']}
           </li>
           <li>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 import Review from './Review.jsx';
+import Ratings from './Ratings.jsx';
 import FormModal from './FormModal.jsx';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -11,12 +12,12 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-function ReviewList({ratings, productId}) {
+function ReviewList({productId}) {
 
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(2)
   const [sortedBy, setSortedBy] = useState('helpful');
-  const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
+  // const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
   const [starReviews, setStarReviews] = useState([]);
 
 
@@ -38,7 +39,7 @@ function ReviewList({ratings, productId}) {
   function sortStarRatings(star) {
 
     var result = reviews.filter((rating) => {
-      return rating['rating'] === 5
+      return rating['rating'] === star
    }
      );
 
@@ -90,12 +91,18 @@ function ReviewList({ratings, productId}) {
   return (
     <Container>
       <Row>
+      <Ratings
+            productId={productId}
+            sortStarRatings={sortStarRatings}
+          />
+      </Row>
+      <Row>
         <h2>Reviews</h2>
         <button  onClick={sortStarRatings}>star Reviews</button>
       </Row>
       <Row>
       <FormControl className={classes.formControl}>
-      <InputLabel>{totalStars} reviews,  Sorted By</InputLabel>
+      <InputLabel>#### reviews,  Sorted By</InputLabel>
       <Select
         onChange={changeSortingType}
         value={sortedBy}
@@ -108,8 +115,7 @@ function ReviewList({ratings, productId}) {
       </Row>
       {reviews.map((review, i) =>
       <Review key={`${i}review`}
-        review={review}
-        ratings={ratings} />)}
+        review={review} />)}
       <Row />
       <Row>
         <button onClick={loadMoreReviews}>More Reviews Button</button>

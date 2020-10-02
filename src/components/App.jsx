@@ -8,41 +8,27 @@ import Ratings from './Ratings.jsx';
 import ReviewList from './ReviewList.jsx';
 import { exampleReview, exampleRating } from './exampleReview.js';
 
+const productId = 1;
+
 function App() {
-  const [ratings, setRatings] = useState({});
-  const productId = '1';
 
-  function getRatings() {
-    axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
-      .then((response) => {
-        setRatings(response.data);
-      });
-  }
 
-  useEffect(() => {
-    getRatings();
-  }, []);
 
-  if (!ratings.ratings) {
-    return <div />;
-  }
+
+
 
   return (
     <Container>
       <Row>
         <Col sm={1} />
         <Col sm={4}>
-          <Ratings
-            ratings={ratings}
-            productId={productId}
-          />
+
         </Col>
         <Col sm={6}>
           <ReviewList
-            ratings={ratings}
             productId={productId}
           />
-        </Col>a
+        </Col>
         <Col sm={1} />
       </Row>
     </Container>
