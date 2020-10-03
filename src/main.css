@@ -1,8 +1,17 @@
 
 
 .raw-progressbar{
-  display: flex;
+align-content: flex-start;
   padding-top: 10px;
-  flex-direction: column;
-  width: 200px;
+
+
+  width: 100px;
+}
+
+
+.raw-rating-button {
+  padding: 0;
+border: none;
+background: none;
+text-decoration: underline;
 }

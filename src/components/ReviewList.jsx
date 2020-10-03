@@ -37,7 +37,7 @@ function ReviewList({productId}) {
 
 
   function sortStarRatings(event) {
-   console.log('current rating inside sort star ratings', typeof(event.target.value));
+   console.log('current rating inside sort star ratings', event.target.value);
    var currentStar = parseInt(event.target.value);
     var result = reviews.filter((rating) => {
       return rating['rating'] === currentStar;

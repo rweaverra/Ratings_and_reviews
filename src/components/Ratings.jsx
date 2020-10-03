@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import axios from 'axios';
 import { Container, Col, Row } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Button from '@material-ui/core/Button';
 import StarRating from './StarRating.jsx';
 import RatingsBar from './RatingsBar.jsx';
 import Recommend from './Recommend.jsx';
@@ -13,7 +14,6 @@ function Ratings({ productId, sortStarRatings }) {
 
   if (ratings.ratings) {
     var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
-
   }
 
   function getRatings() {
@@ -32,44 +32,34 @@ function Ratings({ productId, sortStarRatings }) {
   }
   console.log('ratings Characteristics: ', ratings);
   return (
-    <Container>
+    <Container className="raw-ratings">
       <h2>Ratings</h2>
       <StarRating ratings={ratings} number={number} />
-        <Row>
-          <Recommend recommend={ratings.recommended}/>
-        </Row>
       <Row>
-
-        <button onClick={sortStarRatings} value="1">1 star ratings:</button>
-        {ratings.ratings['1']}
+        <Recommend recommend={ratings.recommended} />
         {' '}
-        <RatingsBar ratings={ratings.ratings['1']} totalRatings={totalRatings} />
-
-      </Row>
-      <Row>
-        <button onClick={sortStarRatings} value="2">2 star ratings:</button>
-        {ratings.ratings['2']}
-        {' '}
-        <RatingsBar ratings={ratings.ratings['2']} totalRatings={totalRatings} />
-      </Row>
-      <Row>
-        <button onClick={sortStarRatings} value="3">3 star ratings:</button>
-        {ratings.ratings['3']}
-        {' '}
-        <RatingsBar ratings={ratings.ratings['3']} totalRatings={totalRatings} />
-      </Row>
-      <Row>
-        <button onClick={sortStarRatings} value="4">4 star ratings:</button>
-        {ratings.ratings['4']}
-        {' '}
-        <RatingsBar ratings={ratings.ratings['4']} totalRatings={totalRatings} />
+        of reviews that recommend this product
       </Row>
       <Row>
 
-        <button onClick={sortStarRatings} value="5">5 star ratings:</button>
-        {ratings.ratings['5']}
-        {' '}
-        <RatingsBar ratings={ratings.ratings['5']} totalRatings={totalRatings} />
+
+        <RatingsBar ratings={ratings.ratings['1']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={1} />
+
+      </Row>
+      <Row>
+
+        <RatingsBar ratings={ratings.ratings['2']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={2} />
+      </Row>
+      <Row>
+
+        <RatingsBar ratings={ratings.ratings['3']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={3} />
+      </Row>
+      <Row>
+      <RatingsBar ratings={ratings.ratings['4']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={4} />
+      </Row>
+      <Row>
+
+      <RatingsBar ratings={ratings.ratings['5']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={5} />
 
       </Row>
       <Row />
@@ -80,14 +70,14 @@ function Ratings({ productId, sortStarRatings }) {
 
       </Row>
       <Row>
-      <CharacteristicSlider value={ratings.characteristics.Fit.value}/>
+        <CharacteristicSlider value={ratings.characteristics.Fit.value} />
       </Row>
       <Row>
         Comfort:
         {ratings.characteristics.Comfort.value}
       </Row>
       <Row>
-      <CharacteristicSlider value={ratings.characteristics.Comfort.value}/>
+        <CharacteristicSlider value={ratings.characteristics.Comfort.value} />
       </Row>
     </Container>
 
