@@ -12,13 +12,13 @@ const productId = 1;
 
 function App() {
   return (
-    <Container>
 
+    <div>
       <ReviewList
         productId={productId}
       />
 
-    </Container>
+    </div>
   );
 }
 

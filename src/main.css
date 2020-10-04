@@ -1,17 +1,79 @@
+body {
+  font-family: "Roboto";
+}
 
-
-.raw-progressbar{
-align-content: flex-start;
-  padding-top: 10px;
-
-
-  width: 100px;
+.raw-justify-end {
+  justify-content: end;
 }
 
 
 .raw-rating-button {
   padding: 0;
+  color: #343434;
 border: none;
 background: none;
 text-decoration: underline;
+margin-right: 20px;
+
+}
+
+.raw-rating-button:hover {
+  color:orange;
+}
+
+
+progress[value] {
+  width: 250px;
+  height: 8px;
+  -webkit-appearance: none;
+   appearance: none;
+}
+
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+
+}
+
+progress[value]::-webkit-progress-value {
+
+  border-radius: 2px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+
+
+.raw-ratings-first-column{
+
+  align-items: left;
+
+}
+
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 300px; /* Full-width */
+  height: 10px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+
+
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 10px; /* Set a specific slider handle width */
+  height: 10px; /* Slider handle height */
+  cursor: pointer;
+
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid rgb(57, 131, 79);
 }

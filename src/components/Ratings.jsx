@@ -38,7 +38,7 @@ function Ratings({ productId, sortStarRatings }) {
       <Row>
         <Recommend recommend={ratings.recommended} />
         {' '}
-        of reviews that recommend this product
+
       </Row>
       <Row>
 
@@ -65,16 +65,13 @@ function Ratings({ productId, sortStarRatings }) {
       <Row />
 
       <Row>
-        Fit 1-5:
-        {ratings.characteristics.Fit.value}
-
+        Fit:
       </Row>
       <Row>
         <CharacteristicSlider value={ratings.characteristics.Fit.value} />
       </Row>
       <Row>
         Comfort:
-        {ratings.characteristics.Comfort.value}
       </Row>
       <Row>
         <CharacteristicSlider value={ratings.characteristics.Comfort.value} />

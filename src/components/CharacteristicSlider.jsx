@@ -1,28 +1,28 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-
-
-const useStyles = makeStyles({
-  root: {
-    width: 200,
-  },
-});
-
-
+import { Container, Col, Row } from 'react-bootstrap';
 
 function CharacteristicSlider({ value }) {
-  const classes = useStyles();
-   const valueTotal = parseInt(value) * 20;
-
-
+  const valueTotal = parseInt(value) * 20;
 
   return (
-    <div className={classes.root}>
-         <Slider disabled defaultValue={valueTotal} aria-labelledby="disabled-slider" />
-    </div>
+    <Container>
+      <Row>
+        <div className="slidecontainer">
+          <input type="range" min="1" max="100" value={valueTotal} className="slider" id="myRange" readOnly />
+        </div>
+      </Row>
+      <Row>
+        <Col>
+          small
+        </Col>
+        <Col >
+        <div className="raw-justify-end"> large</div>
+
+        </Col>
+
+      </Row>
+    </Container>
+
   );
 }
 
