@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import React, { useState, useEffect} from 'react';
+import { Container, Col, Row, Button  } from 'react-bootstrap';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -104,7 +104,9 @@ function ReviewList({ productId }) {
             />
           ))}
 
-          <button onClick={loadMoreReviews}>More Reviews Button</button>
+          <Button
+          variant="jgd-sharp-edge"
+          size="lg" onClick={loadMoreReviews}>More Reviews Button</Button>
           {' '}
           ||
           <button onClick={handleShow}>Add a review</button>

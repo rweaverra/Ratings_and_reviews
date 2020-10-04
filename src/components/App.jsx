@@ -8,6 +8,7 @@ import Ratings from './Ratings.jsx';
 import ReviewList from './ReviewList.jsx';
 import { exampleReview, exampleRating } from './exampleReview.js';
 
+
 const productId = 1;
 
 function App() {

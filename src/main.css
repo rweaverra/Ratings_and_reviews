@@ -78,3 +78,19 @@ progress[value]::-webkit-progress-value {
   border-right: 10px solid transparent;
   border-top: 10px solid rgb(57, 131, 79);
 }
+
+
+/* sharp edge components */
+.jgd-sharp-edge {
+  color: orange;
+  border-radius: 0px;
+  border: orange;
+}
+
+/* large button padding */
+.jgd-large-padded {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
