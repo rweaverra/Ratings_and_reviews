@@ -53,14 +53,15 @@ progress[value]::-webkit-progress-value {
 
 
 .slidecontainer {
-  width: 100%; /* Width of the outside container */
+  width: 250px; /* Width of the outside container */
+
 }
 
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  width: 300px; /* Full-width */
+  width: 250px; /* Full-width */
   height: 10px; /* Specified height */
   background: #d3d3d3; /* Grey background */
 
@@ -70,10 +71,10 @@ progress[value]::-webkit-progress-value {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 10px; /* Set a specific slider handle width */
-  height: 10px; /* Slider handle height */
+  height: 12px; /* Slider handle height */
   cursor: pointer;
 
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 20px solid rgb(57, 131, 79);
+  border-top: 10px solid rgb(57, 131, 79);
 }

@@ -5,19 +5,18 @@ function CharacteristicSlider({ value }) {
   const valueTotal = parseInt(value) * 20;
 
   return (
-    <Container>
-      <Row>
+    <Container >
+      <Row >
         <div className="slidecontainer">
           <input type="range" min="1" max="100" value={valueTotal} className="slider" id="myRange" readOnly />
         </div>
       </Row>
-      <Row>
+      <Row className="raw-justify-end">
         <Col>
           small
         </Col>
         <Col >
-        <div className="raw-justify-end"> large</div>
-
+        large
         </Col>
 
       </Row>
