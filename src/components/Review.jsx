@@ -1,7 +1,10 @@
 import React from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import {
+  Container, Col, Row, Tabs,
+} from 'react-bootstrap';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
 import ReportButton from './ReportButton.jsx';
 import Helpful from './Helpful.jsx';
 import StarRating from './StarRating.jsx';
@@ -12,7 +15,7 @@ function Review(props) {
     return <div />;
   }
   return (
-    <Container>
+    <Container className="raw-individual-review">
       <Row>
         <Col>
           <Box component="fieldset" mb={1} borderColor="transparent">
@@ -24,7 +27,7 @@ function Review(props) {
         </Col>
       </Row>
       <Row>
-        <h3>{props.review.summary}</h3>
+        <h5>{props.review.summary}</h5>
       </Row>
       <Row>
         response
@@ -41,7 +44,10 @@ function Review(props) {
         <Col>
           <ReportButton review={props.review} getReviews={props.getNewestReviews} />
         </Col>
+
       </Row>
+        <Divider />
+
     </Container>
 
   );

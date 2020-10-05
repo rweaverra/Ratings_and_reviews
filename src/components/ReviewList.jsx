@@ -60,6 +60,7 @@ function ReviewList({ productId }) {
       margin: theme.spacing(1),
       minWidth: 120,
 
+
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -96,11 +97,10 @@ function ReviewList({ productId }) {
         <Col sm={6}>
 
           <h2>Reviews</h2>
-          <Row>
-            <Col className="raw-justify-end">
-            {totalReviews} reviews,  Sorted By
-            </Col>
-            <Col>
+          <Row className="align-items-center raw-review-row">
+
+           {totalReviews} reviews,  Sorted By
+
           <FormControl className={classes.formControl}>
             <Select
               onChange={changeSortingType}
@@ -111,7 +111,7 @@ function ReviewList({ productId }) {
               <MenuItem value="newest">Newest</MenuItem>
             </Select>
           </FormControl>
-          </Col>
+
           </Row>
           {reviews.map((review, i) => (
             <Review

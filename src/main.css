@@ -96,3 +96,20 @@ progress[value]::-webkit-progress-value {
   background-color: black;
   color: white;
 }
+
+
+.raw-review-row {
+  margin-bottom: 50px;
+}
+
+.raw-individual-review {
+  margin-bottom: 50px;
+  border-bottom-color: black;
+  border-bottom-width: 0.5;
+}
+
+.raw-hr {
+  height: 15px;
+  background: #fff;
+  color: black;
+}
