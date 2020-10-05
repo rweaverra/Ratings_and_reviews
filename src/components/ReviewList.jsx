@@ -15,8 +15,8 @@ function ReviewList({ productId }) {
   const [count, setCount] = useState(2);
   const [sortedBy, setSortedBy] = useState('helpful');
   const [starReviews, setStarReviews] = useState([]);
-  const [totalReviews, setTotalReviews] = useState('');
   const [displayedReviews, setDisplayedReviews] = useState([]);
+  const [helpfulness, setHelpfulness] = useState('');
 
   function loadMoreReviews() {
     setCount(count + 2);
@@ -33,25 +33,20 @@ function ReviewList({ productId }) {
   function sortStarRatings(event) {
     console.log('current rating inside sort star ratings', event.target.value);
     const currentStar = parseInt(event.target.value);
-    const result = reviews.filter((rating) => rating.rating === currentStar);
+    const result = displayedReviews.filter((rating) => rating.rating === currentStar);
 
-    return (result.length > 0 ? setReviews(result) : null);
+    return (result.length > 0 ? setDisplayedReviews(result) : null);
 
     console.log('result of sortStarRating', result);
   }
 
-  function showTotalReviews(totalReviews) {
-     setTotalReviews(totalReviews);
-  }
 
-  // function to reorganize the reviews array by star rating and then setReviews??
 
   useEffect(() => {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=30`)
       .then((response) => {
         const { results } = response.data;
         setReviews(response.data.results)
-         console.log('results inside of useEffect', results)
          var displayed = results.slice(0, count);
          setDisplayedReviews(displayed);
       });
@@ -99,7 +94,7 @@ function ReviewList({ productId }) {
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
-            showTotalReviews={showTotalReviews}
+
           />
         </Col>
 
