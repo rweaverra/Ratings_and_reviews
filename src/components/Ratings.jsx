@@ -8,12 +8,13 @@ import RatingsBar from './RatingsBar.jsx';
 import Recommend from './Recommend.jsx';
 import CharacteristicSlider from './CharacteristicSlider.jsx';
 
-function Ratings({ productId, sortStarRatings }) {
+function Ratings({ productId, sortStarRatings, showTotalReviews }) {
   const [ratings, setRatings] = useState({});
   const number = 'this string is to trigger the average inside of StarRating Component';
 
   if (ratings.ratings) {
     var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
+    showTotalReviews(totalRatings);
   }
 
   function getRatings() {

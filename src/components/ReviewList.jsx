@@ -4,7 +4,6 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import FormModal from './FormModal.jsx';
@@ -17,6 +16,7 @@ function ReviewList({ productId }) {
   const [sortedBy, setSortedBy] = useState('helpful');
   // const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
   const [starReviews, setStarReviews] = useState([]);
+  const [totalReviews, setTotalReviews] = useState('');
 
   function loadMoreReviews() {
     setCount(count + 2);
@@ -39,6 +39,11 @@ function ReviewList({ productId }) {
     console.log('result of sortStarRating', result);
   }
 
+  function showTotalReviews(totalReviews) {
+    console.log('inside show total reviews', totalReviews);
+     setTotalReviews(totalReviews);
+  }
+
   // function to reorganize the reviews array by star rating and then setReviews??
 
   useEffect(() => {
@@ -54,10 +59,16 @@ function ReviewList({ productId }) {
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
+
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+
+    inputLabel: {
+      color: "green",
+    },
+
   }));
   const classes = useStyles();
 
@@ -78,15 +89,19 @@ function ReviewList({ productId }) {
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
+            showTotalReviews={showTotalReviews}
           />
         </Col>
 
         <Col sm={6}>
 
           <h2>Reviews</h2>
-
+          <Row>
+            <Col className="raw-justify-end">
+            {totalReviews} reviews,  Sorted By
+            </Col>
+            <Col>
           <FormControl className={classes.formControl}>
-            <InputLabel>#### reviews,  Sorted By</InputLabel>
             <Select
               onChange={changeSortingType}
               value={sortedBy}
@@ -96,21 +111,22 @@ function ReviewList({ productId }) {
               <MenuItem value="newest">Newest</MenuItem>
             </Select>
           </FormControl>
-
+          </Col>
+          </Row>
           {reviews.map((review, i) => (
             <Review
               key={`${i}review`}
               review={review}
             />
           ))}
-
-          <Button
-          variant="jgd-sharp-edge"
-          size="lg" onClick={loadMoreReviews}>More Reviews Button</Button>
+        <Row>
+          <button
+            className="raw-review-buttons"
+          onClick={loadMoreReviews}>MORE REVIEWS</button>
           {' '}
-          ||
-          <button onClick={handleShow}>Add a review</button>
 
+          <button className="raw-review-buttons" onClick={handleShow}>ADD A REVIEW</button>
+          </Row>
           <FormModal show={show} onHide={handleClose} />
         </Col>
       </Row>
