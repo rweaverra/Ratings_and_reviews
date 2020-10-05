@@ -31,7 +31,8 @@ function Ratings({ productId, sortStarRatings, showTotalReviews }) {
   if (!ratings.ratings) {
     return <div />;
   }
-  console.log('ratings Characteristics: ', ratings);
+
+
   return (
     <Container className="raw-ratings">
       <h2>Ratings</h2>

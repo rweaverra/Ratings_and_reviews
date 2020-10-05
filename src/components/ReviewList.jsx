@@ -14,12 +14,13 @@ function ReviewList({ productId }) {
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(2);
   const [sortedBy, setSortedBy] = useState('helpful');
-  // const totalStars = Object.values(ratings.ratings).reduce((p, v) => p + v);
   const [starReviews, setStarReviews] = useState([]);
   const [totalReviews, setTotalReviews] = useState('');
+  const [displayedReviews, setDisplayedReviews] = useState([]);
 
   function loadMoreReviews() {
     setCount(count + 2);
+
   }
 
   const changeSortingType = (event) => {
@@ -40,18 +41,24 @@ function ReviewList({ productId }) {
   }
 
   function showTotalReviews(totalReviews) {
-    console.log('inside show total reviews', totalReviews);
      setTotalReviews(totalReviews);
   }
 
   // function to reorganize the reviews array by star rating and then setReviews??
 
   useEffect(() => {
-    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=${count}`)
+    axios.get(`http://52.26.193.201:3000/reviews/${productId}/list?sort=${sortedBy}&count=30`)
       .then((response) => {
         const { results } = response.data;
-        setReviews(response.data.results);
+        setReviews(response.data.results)
+         console.log('results inside of useEffect', results)
+         var displayed = results.slice(0, count);
+         setDisplayedReviews(displayed);
       });
+
+
+
+
   }, [count, sortedBy]);
 
   // SORTING STYLING========== can probably figure out a way to put into css
@@ -78,7 +85,9 @@ function ReviewList({ productId }) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  if (reviews.length === 0) {
+  console.log('reviews',reviews);
+
+  if (displayedReviews.length === 0) {
     return <div />;
   }
 
@@ -99,7 +108,7 @@ function ReviewList({ productId }) {
           <h2>Reviews</h2>
           <Row className="align-items-center raw-review-row">
 
-           {totalReviews} reviews,  Sorted By
+           {reviews.length} reviews,  Sorted By
 
           <FormControl className={classes.formControl}>
             <Select
@@ -113,7 +122,7 @@ function ReviewList({ productId }) {
           </FormControl>
 
           </Row>
-          {reviews.map((review, i) => (
+          {displayedReviews.map((review, i) => (
             <Review
               key={`${i}review`}
               review={review}

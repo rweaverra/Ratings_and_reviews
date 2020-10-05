@@ -2,15 +2,15 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
-function Helpful(props) {
+function Helpful({ review }) {
   const [helpful, setHelpful] = useState(false);
-  const [totalHelp, setTotalHelp] = useState(props.review.helpfulness);
+  const [totalHelp, setTotalHelp] = useState(review.helpfulness);
 
   function addHelpful(event) {
     setHelpful(!helpful);
     axios({
       method: 'put',
-      url: `http://52.26.193.201:3000/reviews/helpful/${props.review.review_id}`,
+      url: `http://52.26.193.201:3000/reviews/helpful/${review.review_id}`,
     })
       .then((response) => {
         setTotalHelp(totalHelp + 1);
@@ -21,7 +21,7 @@ function Helpful(props) {
 
   return (
     <div>
-      <Button color="primary" type="button" disabled={helpful} onClick={addHelpful}>Helpful {props.review.helpfulness} </Button>
+      <Button color="primary" type="button" disabled={helpful} onClick={addHelpful}>Helpful {review.helpfulness} </Button>
     </div>
 
   );

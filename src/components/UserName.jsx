@@ -1,7 +1,10 @@
 import React from 'react';
 
 function UserName({ review }) {
+
+
   const date = review.date.substring(0, 10);
+
   const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
     'August', 'September', 'October', 'November', 'December'];
   const monthNumber = parseInt(date.slice(5, 7));
@@ -10,6 +13,8 @@ function UserName({ review }) {
   const monthWord = month[monthNumber];
 
   const listedDate = `${monthWord} ${day}, ${year}`;
+
+
 
 
   return (

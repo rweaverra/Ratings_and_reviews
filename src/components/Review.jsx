@@ -14,6 +14,7 @@ function Review(props) {
   if (!props.review) {
     return <div />;
   }
+
   return (
     <Container className="raw-individual-review">
       <Row>
