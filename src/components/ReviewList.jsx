@@ -80,7 +80,6 @@ function ReviewList({ productId }) {
   const handleClose = () => setShow(false);
   function handleShow() { setShow(true); }
 
-  console.log('reviews',reviews);
 
   if (displayedReviews.length === 0) {
     return <div />;

@@ -14,8 +14,9 @@ function Ratings({ productId, sortStarRatings }) {
 
   if (ratings.ratings) {
     var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
-
   }
+
+  console.log('ratings', ratings);
 
   function getRatings() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
@@ -32,7 +33,6 @@ function Ratings({ productId, sortStarRatings }) {
     return <div />;
   }
 
-
   return (
     <Container className="raw-ratings">
       <h2>Ratings</h2>
@@ -42,41 +42,11 @@ function Ratings({ productId, sortStarRatings }) {
         {' '}
 
       </Row>
-      <Row>
-
-
-        <RatingsBar ratings={ratings.ratings['1']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={1} />
-
+      <Row className="raw-star-row">
+        {Object.entries(ratings.ratings).map(([key, value], i) => <RatingsBar thisValue={key} ratings={value} totalRatings={totalRatings} key={i + value} />)}
       </Row>
       <Row>
-
-        <RatingsBar ratings={ratings.ratings['2']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={2} />
-      </Row>
-      <Row>
-
-        <RatingsBar ratings={ratings.ratings['3']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={3} />
-      </Row>
-      <Row>
-      <RatingsBar ratings={ratings.ratings['4']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={4} />
-      </Row>
-      <Row>
-
-      <RatingsBar ratings={ratings.ratings['5']} totalRatings={totalRatings} sortStarRatings={sortStarRatings} thisValue={5} />
-
-      </Row>
-      <Row />
-
-      <Row>
-        Fit:
-      </Row>
-      <Row>
-        <CharacteristicSlider value={ratings.characteristics.Fit.value} />
-      </Row>
-      <Row>
-        Comfort:
-      </Row>
-      <Row>
-        <CharacteristicSlider value={ratings.characteristics.Comfort.value} />
+      {Object.entries(ratings.characteristics).map(([key, value], i) => <CharacteristicSlider characteristic={key} value={value.value} key={i + value} />)}
       </Row>
     </Container>
 
