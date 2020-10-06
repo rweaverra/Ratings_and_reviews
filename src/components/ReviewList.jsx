@@ -44,10 +44,9 @@ function ReviewList({ productId }) {
       var sliced = [];
 
       filterApplied.map((rating, i) => {
-      //if the number matches, then we will undo it
+
       if(rating === currentStar){
         console.log('this will be the function to undo it');
-        //remove from filterApplied
         sliced = filterApplied.slice(i, i + 1)
         console.log('sliced', sliced);
         return setFilterApplied(sliced);
@@ -57,12 +56,7 @@ function ReviewList({ productId }) {
       setFilterApplied([...filterApplied, currentStar]);
       return  setDisplayedReviews(displayedReviews.concat(result));
      }
-      // setFilterApplied([currentStar]);
-      // console.log('filter applied', filterApplied)
-      // return (result.length > 0 ? setDisplayedReviews(result) : null);
 
-
-    // return (result.length > 0 ? setDisplayedReviews([...displayedReviews, result]) : <div>hello</div>);
 
   } else {
     setFilterApplied([currentStar]);
