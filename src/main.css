@@ -26,8 +26,13 @@ margin-right: 25px;
   color:orange;
 }
 
+.raw-characteristc-title {
+  align-content: flex-end;
+}
+
 
 progress[value] {
+
   width: 250px;
   height: 8px;
   -webkit-appearance: none;

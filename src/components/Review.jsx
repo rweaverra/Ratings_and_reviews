@@ -30,12 +30,11 @@ function Review(props) {
       <Row>
         <h5>{props.review.summary}</h5>
       </Row>
+
       <Row>
-        response
         {props.review.response}
       </Row>
       <Row>
-        Summary:
         {props.review.body}
       </Row>
       <Row>

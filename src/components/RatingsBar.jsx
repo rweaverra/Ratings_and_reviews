@@ -18,7 +18,7 @@ function RatingsBar({
           <button className="raw-rating-button" color="primary" type="button" value={thisValue} onClick={sortStarRatings} >{thisValue} star </button>
           </span>
        <span>
-       <progress className="raw-progressBar" id="progressBar" max="100" value={percentageRatings}></progress>
+       <progress className="raw-progressBar"  max="100" value={percentageRatings}></progress>
           </span>
 
       </Row>

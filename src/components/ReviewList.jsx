@@ -17,6 +17,7 @@ function ReviewList({ productId }) {
   const [starReviews, setStarReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState([]);
   const [helpfulness, setHelpfulness] = useState('');
+  const [filterApplied, setFilterApplied] = useState([]);
 
   function loadMoreReviews() {
     setCount(count + 2);
@@ -31,14 +32,44 @@ function ReviewList({ productId }) {
   };
 
   function sortStarRatings(event) {
-    console.log('current rating inside sort star ratings', event.target.value);
+
+    console.log('result of sortStarRating', reviews);
     const currentStar = parseInt(event.target.value);
-    const result = displayedReviews.filter((rating) => rating.rating === currentStar);
+    const result = reviews.filter((rating) => rating.rating === currentStar);
 
+    console.log('result', result);
+
+    if(filterApplied.length > 0) {
+      console.log('insided of itttttt')
+      var sliced = [];
+
+      filterApplied.map((rating, i) => {
+      //if the number matches, then we will undo it
+      if(rating === currentStar){
+        console.log('this will be the function to undo it');
+        //remove from filterApplied
+        sliced = filterApplied.slice(i, i + 1)
+        console.log('sliced', sliced);
+        return setFilterApplied(sliced);
+      }
+    })
+     if(sliced.length < 1) {
+      setFilterApplied([...filterApplied, currentStar]);
+      return  setDisplayedReviews(displayedReviews.concat(result));
+     }
+      // setFilterApplied([currentStar]);
+      // console.log('filter applied', filterApplied)
+      // return (result.length > 0 ? setDisplayedReviews(result) : null);
+
+
+    // return (result.length > 0 ? setDisplayedReviews([...displayedReviews, result]) : <div>hello</div>);
+
+  } else {
+    setFilterApplied([currentStar]);
     return (result.length > 0 ? setDisplayedReviews(result) : null);
-
-    console.log('result of sortStarRating', result);
   }
+
+  };
 
 
 
@@ -89,7 +120,8 @@ function ReviewList({ productId }) {
     <Container>
 
       <Row>
-        <Col sm={6}>
+        <Col sm={1}/>
+        <Col sm={5}>
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
@@ -132,6 +164,7 @@ function ReviewList({ productId }) {
           </Row>
           <FormModal show={show} onHide={handleClose} />
         </Col>
+        <Col sm={1}/>
       </Row>
     </Container>
   );

@@ -16,8 +16,6 @@ function Ratings({ productId, sortStarRatings }) {
     var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
   }
 
-  console.log('ratings', ratings);
-
   function getRatings() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
       .then((response) => {
@@ -43,9 +41,9 @@ function Ratings({ productId, sortStarRatings }) {
 
       </Row>
       <Row className="raw-star-row">
-        {Object.entries(ratings.ratings).map(([key, value], i) => <RatingsBar thisValue={key} ratings={value} totalRatings={totalRatings} key={i + value} />)}
+        {Object.entries(ratings.ratings).map(([key, value], i) => <RatingsBar thisValue={key} ratings={value} totalRatings={totalRatings} key={i + value} sortStarRatings={sortStarRatings}/>)}
       </Row>
-      <Row>
+      <Row className="raw-star-row">
       {Object.entries(ratings.characteristics).map(([key, value], i) => <CharacteristicSlider characteristic={key} value={value.value} key={i + value} />)}
       </Row>
     </Container>

@@ -9,14 +9,16 @@ function CharacteristicSlider({ value, characteristic }) {
   }
 
   return (
-    <Container >
-      <h5>{characteristic}</h5>
+    <Container>
+      <Row>
+      <h5 className="raw-characteristc-title">{characteristic}</h5>
+      </Row>
       <Row>
         <div className="slidecontainer">
           <input type="range" min="1" max="100" value={valueTotal} className="slider" id="myRange" readOnly />
         </div>
       </Row>
-      <Row className="raw-justify-end">
+      <Row >
         <Col>
          {characteristic === "Fit" || characteristic === "Length" ? "small" : "poor"}
         </Col>
