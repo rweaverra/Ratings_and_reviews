@@ -34,26 +34,30 @@ function ReviewList({ productId }) {
   function sortStarRatings(event) {
 
     console.log('result of sortStarRating', reviews);
-    const currentStar = parseInt(event.target.value);
+    const currentStar = parseInt(event);
     const result = reviews.filter((rating) => rating.rating === currentStar);
 
-    console.log('result', result);
+    console.log('result', event);
 
-    if(filterApplied.length > 0) {
+    if(filterApplied.length > 0) {          //checking to see if a star was clicked on
       console.log('insided of itttttt')
-      var sliced = [];
 
+     var hasReset = false;
       filterApplied.map((rating, i) => {
 
-      if(rating === currentStar){
-        console.log('this will be the function to undo it');
-        sliced = filterApplied.slice(i, i + 1)
-        console.log('sliced', sliced);
-        return setFilterApplied(sliced);
+      if(rating === currentStar){                 //if the clicked star has aleady been clicked once
+        console.log('filterapplied', filterApplied);
+        var spliced = filterApplied;
+        spliced.splice(i, 1) //remove that star from filter applied
+        console.log('spliced filter', spliced);
+        var displayed = reviews.slice(0, count);
+        hasReset = true;
+       setFilterApplied(spliced);
+       return setDisplayedReviews(displayed);  //resets star search
       }
     })
-     if(sliced.length < 1) {
-      setFilterApplied([...filterApplied, currentStar]);
+     if(hasReset === false) {
+      setFilterApplied([...filterApplied, currentStar]); //add star review search if more than 1 star is selected
       return  setDisplayedReviews(displayedReviews.concat(result));
      }
 
