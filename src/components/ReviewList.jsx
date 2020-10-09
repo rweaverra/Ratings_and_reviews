@@ -33,25 +33,26 @@ function ReviewList({ productId }) {
 
   function sortStarRatings(event) {
 
-    console.log('result of sortStarRating', reviews);
+    console.log('reviews', reviews);
     const currentStar = parseInt(event);
     const result = reviews.filter((rating) => rating.rating === currentStar);
 
-    console.log('result', event);
+    console.log('current clicked star', event);
+    console.log('result-array of same stars as event', result);
 
-    if(filterApplied.length > 0) {          //checking to see if a star was clicked on
+    if(filterApplied.length > 0) {          //checking to see if a star was alread clicked on
       console.log('insided of itttttt')
 
-     var hasReset = false;
-      filterApplied.map((rating, i) => {
+     var hasReset = false;    //what does has reset do??
+      filterApplied.map((rating, i) => {      //iterating the stars that have been clicked
 
       if(rating === currentStar){                 //if the clicked star has aleady been clicked once
         console.log('filterapplied', filterApplied);
         var spliced = filterApplied;
         spliced.splice(i, 1) //remove that star from filter applied
-        console.log('spliced filter', spliced);
-        var displayed = reviews.slice(0, count);
-        hasReset = true;
+        console.log('spliced filter', spliced);  //shows the remaining clicked stars
+        var displayed = reviews.slice(0, count); //this is what resets it after unclicking on star rating, need to adjust this
+        hasReset = true; // not sure what this is for, it is a flag for something
        setFilterApplied(spliced);
        return setDisplayedReviews(displayed);  //resets star search
       }

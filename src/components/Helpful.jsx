@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 
 function Helpful({ review }) {
   const [helpful, setHelpful] = useState(false);
-  const [totalHelp, setTotalHelp] = useState(review.helpfulness);
+  const totalHelp = review.helpfulness;
+  const plusOneHelp = review.helpfulness + 1;
 
   function addHelpful(event) {
     setHelpful(!helpful);
@@ -13,7 +14,6 @@ function Helpful({ review }) {
       url: `http://52.26.193.201:3000/reviews/helpful/${review.review_id}`,
     })
       .then((response) => {
-        setTotalHelp(totalHelp + 1);
         console.log(response);
       })
 
@@ -21,13 +21,12 @@ function Helpful({ review }) {
 
   return (
     <div>
-      <Button color="primary" type="button" disabled={helpful} onClick={addHelpful}>Helpful {review.helpfulness} </Button>
+      <Button color="primary" type="button" disabled={helpful} onClick={addHelpful}>Helpful {helpful ? plusOneHelp : totalHelp} </Button>
     </div>
 
   );
 }
 
 export default Helpful;
-
 
 
