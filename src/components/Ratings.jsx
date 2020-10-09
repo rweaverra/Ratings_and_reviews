@@ -34,7 +34,10 @@ function Ratings({ productId, sortStarRatings }) {
   return (
     <Container className="raw-ratings">
       <h2>Ratings</h2>
+      <Row>
       <StarRating ratings={ratings} number={number} />
+      </Row>
+
       <Row>
         <Recommend recommend={ratings.recommended} />
         {' '}

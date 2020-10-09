@@ -37,16 +37,14 @@ margin-right: 25px;
   color:orange;
 }
 
-.raw-characteristc-title {
-  align-content: flex-end;
-}
+
 
 
 .raw-progressBar {
-
+  -webkit-appearance: none;
   width: 250px;
   height: 8px;
-  -webkit-appearance: none;
+
    appearance: none;
    background-color: #eee;
    border-radius: 2px;
@@ -61,24 +59,18 @@ margin-right: 25px;
 
 }
 
-/* progress[value]::-webkit-progress-value {
-
-  border-radius: 2px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-} */
-
-
 
 .raw-ratings-first-column{
 
   align-items: left;
+  justify-items: start;
 
 }
 
 
 .raw-slidecontainer {
   width: 100%; /* Width of the outside container */
-  margin-right: 30px;
+  margin-right: 35px;
 }
 
 /* The slider itself */
@@ -103,10 +95,18 @@ margin-right: 25px;
   border-top: 10px solid rgb(57, 131, 79);
 }
 
+.raw-characteristc-title {
+  margin-bottom: -15px;
+  margin-top: 20px;
+  padding-bottom: 0;
+}
+
 .raw-characteristics {
   display: flex;
   justify-content: space-between;
-  margin-right: 30px;
+  margin-right: 35px;
+  margin-top: -10px;
+
 }
 
 

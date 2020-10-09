@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import FormModal from './FormModal.jsx';
 import Ratings from './Ratings.jsx';
 import Review from './Review.jsx';
+import { v4 as uuidv4 } from "uuid";
 
 function ReviewList({ productId }) {
   const [reviews, setReviews] = useState([]);
@@ -146,9 +147,9 @@ function ReviewList({ productId }) {
           </FormControl>
 
           </Row>
-          {displayedReviews.map((review, i) => (
+          {displayedReviews.map((review) => (
             <Review
-              key={`${i}review`}
+              key={uuidv4()}
               review={review}
             />
           ))}

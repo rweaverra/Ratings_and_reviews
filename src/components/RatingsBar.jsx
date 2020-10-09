@@ -19,7 +19,7 @@ function RatingsBar({
   };
 
   return (
-    <Container>
+    <Container style={{width: "100%"}}>
 
       <Row>
 

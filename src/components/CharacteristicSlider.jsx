@@ -10,8 +10,8 @@ function CharacteristicSlider({ value, characteristic }) {
 
   return (
     <Container>
-      <Row>
-      <h5 className="raw-characteristc-title">{characteristic}</h5>
+
+      <Row className="raw-characteristc-title"><h6>{characteristic}</h6>
       </Row>
       <Row>
         <div className="raw-slidecontainer">
