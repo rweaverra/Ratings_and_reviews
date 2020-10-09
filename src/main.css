@@ -17,6 +17,17 @@ margin-right: 25px;
 
 }
 
+.raw-clicked-rating-button {
+  border-radius: 8px;
+  border: 2px solid orange;
+  color: orange;
+background: none;
+text-decoration: underline;
+margin-right: 25px;
+
+
+}
+
 .raw-star-row {
   margin-top: 10px;
   margin-bottom: 20px;
