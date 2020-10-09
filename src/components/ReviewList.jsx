@@ -119,7 +119,7 @@ function ReviewList({ productId }) {
     <Container>
 
       <Row>
-        <Col sm={6}>
+        <Col sm={4}>
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
