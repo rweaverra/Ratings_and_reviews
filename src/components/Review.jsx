@@ -39,7 +39,12 @@ function Review(props) {
       </Row>
       <Row>
         <Col>
-          <Helpful review={props.review} getReviews={props.getNewestReviews} />
+          <Helpful
+            review={props.review}
+            getReviews={props.getNewestReviews}
+            helpfulnessArray={props.helpfulnessArray}
+            handleHelpfulnessArray={props.handleHelpfulnessArray}
+            />
         </Col>
         <Col>
           <ReportButton review={props.review} getReviews={props.getNewestReviews} />

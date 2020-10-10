@@ -17,12 +17,16 @@ function ReviewList({ productId }) {
   const [sortedBy, setSortedBy] = useState('helpful');
   const [starReviews, setStarReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState([]);
-  const [helpfulness, setHelpfulness] = useState('');
+  const [helpfulnessArray, setHelpfulnessArray] = useState([]);
   const [filterApplied, setFilterApplied] = useState([]);
 
   function loadMoreReviews() {
     setCount(count + 2);
 
+  }
+
+  const handleHelpfulnessArray = (event) => {
+    setHelpfulnessArray(helpfulnessArray => [...helpfulnessArray, event]);
   }
 
   const changeSortingType = (event) => {
@@ -151,6 +155,8 @@ function ReviewList({ productId }) {
             <Review
               key={uuidv4()}
               review={review}
+              helpfulnessArray={helpfulnessArray}
+              handleHelpfulnessArray={handleHelpfulnessArray}
             />
           ))}
         <Row>
