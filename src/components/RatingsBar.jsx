@@ -30,8 +30,8 @@ function RatingsBar({
             star
             {' '}
           </button>
-        </span>
-        <span>
+
+
           <progress className="raw-progressBar" max="100" value={percentageRatings} />
         </span>
 

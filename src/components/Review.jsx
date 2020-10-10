@@ -18,8 +18,8 @@ function Review(props) {
   return (
     <Container className="raw-individual-review">
       <Row>
-        <Col>
-          <Box component="fieldset" mb={1} borderColor="transparent">
+        <Col className="no-left-padding">
+          <Box component="fieldset" mb={1} borderColor="transparent" className="no-left-padding">
             <Rating name="read-only" value={props.review.rating} precision={0.25} readOnly />
           </Box>
         </Col>

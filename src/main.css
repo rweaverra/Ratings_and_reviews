@@ -6,6 +6,14 @@ body {
   justify-content: end;
 }
 
+.raw-ratings {
+  padding-right: 20px;
+}
+
+.raw-reviews {
+  margin-left: 30px;
+  padding: 0;
+}
 
 .raw-rating-button {
   padding: 0;
@@ -15,6 +23,14 @@ background: none;
 text-decoration: underline;
 margin-right: 25px;
 
+}
+
+.align-items-center {
+  margin: 0;
+}
+
+.no-left-padding {
+  padding-left: 0
 }
 
 .raw-clicked-rating-button {
@@ -42,7 +58,7 @@ margin-right: 25px;
 
 .raw-progressBar {
   -webkit-appearance: none;
-  width: 250px;
+  width: 80%;
   height: 8px;
 
    appearance: none;
@@ -60,17 +76,18 @@ margin-right: 25px;
 }
 
 
+
 .raw-ratings-first-column{
 
-  align-items: left;
   justify-items: start;
+  width: 100%;
 
 }
 
 
 .raw-slidecontainer {
   width: 100%; /* Width of the outside container */
-  margin-right: 35px;
+  margin-right: 10px;
 }
 
 /* The slider itself */
@@ -104,9 +121,10 @@ margin-right: 25px;
 .raw-characteristics {
   display: flex;
   justify-content: space-between;
-  margin-right: 35px;
+  margin-left: 1px;
+  margin-right: 10px;
   margin-top: -10px;
-
+  font-weight: 300;
 }
 
 

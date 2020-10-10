@@ -120,7 +120,7 @@ function ReviewList({ productId }) {
     <Container>
 
       <Row>
-        <Col sm={4}>
+        <Col sm={4} className="raw-ratings-column">
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
@@ -128,7 +128,7 @@ function ReviewList({ productId }) {
           />
         </Col>
 
-        <Col sm={6}>
+        <Col sm={7} className="raw-reviews">
 
           <h2>Reviews</h2>
           <Row className="align-items-center raw-review-row">
@@ -163,7 +163,7 @@ function ReviewList({ productId }) {
           </Row>
           <FormModal show={show} onHide={handleClose} />
         </Col>
-        <Col sm={1}/>
+        <Col/>
       </Row>
     </Container>
   );
