@@ -6,6 +6,14 @@ body {
   justify-content: end;
 }
 
+.raw-ratings {
+  padding-right: 20px;
+}
+
+.raw-reviews {
+  margin-left: 30px;
+  padding: 0;
+}
 
 .raw-rating-button {
   padding: 0;
@@ -14,6 +22,25 @@ border: none;
 background: none;
 text-decoration: underline;
 margin-right: 25px;
+
+}
+
+.align-items-center {
+  margin: 0;
+}
+
+.no-left-padding {
+  padding-left: 0
+}
+
+.raw-clicked-rating-button {
+  border-radius: 8px;
+  border: 2px solid orange;
+  color: orange;
+background: none;
+text-decoration: underline;
+margin-right: 25px;
+
 
 }
 
@@ -26,52 +53,48 @@ margin-right: 25px;
   color:orange;
 }
 
-.raw-characteristc-title {
-  align-content: flex-end;
-}
 
 
-progress[value] {
 
-  width: 250px;
-  height: 8px;
+.raw-progressBar {
   -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+
    appearance: none;
+   background-color: #eee;
+   border-radius: 2px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
 
-progress[value]::-webkit-progress-bar {
+.raw-progressBar::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 
 }
 
-progress[value]::-webkit-progress-value {
-
-  border-radius: 2px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-}
-
 
 
 .raw-ratings-first-column{
 
-  align-items: left;
+  justify-items: start;
+  width: 100%;
 
 }
 
 
-.slidecontainer {
-  width: 250px; /* Width of the outside container */
-
+.raw-slidecontainer {
+  width: 100%; /* Width of the outside container */
+  margin-right: 10px;
 }
 
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  width: 250px; /* Full-width */
+  width: 100%; /* Full-width */
   height: 10px; /* Specified height */
   background: #d3d3d3; /* Grey background */
 
@@ -87,6 +110,21 @@ progress[value]::-webkit-progress-value {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid rgb(57, 131, 79);
+}
+
+.raw-characteristc-title {
+  margin-bottom: -15px;
+  margin-top: 20px;
+  padding-bottom: 0;
+}
+
+.raw-characteristics {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1px;
+  margin-right: 10px;
+  margin-top: -10px;
+  font-weight: 300;
 }
 
 

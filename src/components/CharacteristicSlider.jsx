@@ -10,21 +10,21 @@ function CharacteristicSlider({ value, characteristic }) {
 
   return (
     <Container>
-      <Row>
-      <h5 className="raw-characteristc-title">{characteristic}</h5>
+
+      <Row className="raw-characteristc-title"><h6>{characteristic}</h6>
       </Row>
       <Row>
-        <div className="slidecontainer">
+        <div className="raw-slidecontainer">
           <input type="range" min="1" max="100" value={valueTotal} className="slider" id="myRange" readOnly />
         </div>
       </Row>
-      <Row >
-        <Col>
-         {characteristic === "Fit" || characteristic === "Length" ? "small" : "poor"}
-        </Col>
-        <Col>
-         {characteristic === "Fit" || characteristic === "Length" ? "large" : "superb"}
-        </Col>
+      <Row className="raw-characteristics">
+
+         <div>{characteristic === "Fit" || characteristic === "Length" ? "small" : "poor"}</div>
+
+
+         <div>{characteristic === "Fit" || characteristic === "Length" ? "large" : "superb"}</div>
+
 
       </Row>
     </Container>

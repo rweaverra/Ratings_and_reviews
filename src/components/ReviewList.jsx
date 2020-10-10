@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import FormModal from './FormModal.jsx';
 import Ratings from './Ratings.jsx';
 import Review from './Review.jsx';
+import { v4 as uuidv4 } from "uuid";
 
 function ReviewList({ productId }) {
   const [reviews, setReviews] = useState([]);
@@ -33,27 +34,32 @@ function ReviewList({ productId }) {
 
   function sortStarRatings(event) {
 
-    console.log('result of sortStarRating', reviews);
-    const currentStar = parseInt(event.target.value);
+    console.log('reviews', reviews);
+    const currentStar = parseInt(event);
     const result = reviews.filter((rating) => rating.rating === currentStar);
 
-    console.log('result', result);
+    console.log('current clicked star', event);
+    console.log('result-array of same stars as event', result);
 
-    if(filterApplied.length > 0) {
+    if(filterApplied.length > 0) {          //checking to see if a star was alread clicked on
       console.log('insided of itttttt')
-      var sliced = [];
 
-      filterApplied.map((rating, i) => {
+     var hasReset = false;    //what does has reset do??
+      filterApplied.map((rating, i) => {      //iterating the stars that have been clicked
 
-      if(rating === currentStar){
-        console.log('this will be the function to undo it');
-        sliced = filterApplied.slice(i, i + 1)
-        console.log('sliced', sliced);
-        return setFilterApplied(sliced);
+      if(rating === currentStar){                 //if the clicked star has aleady been clicked once
+        console.log('filterapplied', filterApplied);
+        var spliced = filterApplied;
+        spliced.splice(i, 1) //remove that star from filter applied
+        console.log('spliced filter', spliced);  //shows the remaining clicked stars
+        var displayed = reviews.slice(0, count); //this is what resets it after unclicking on star rating, need to adjust this
+        hasReset = true; // not sure what this is for, it is a flag for something
+       setFilterApplied(spliced);
+       return setDisplayedReviews(displayed);  //resets star search
       }
     })
-     if(sliced.length < 1) {
-      setFilterApplied([...filterApplied, currentStar]);
+     if(hasReset === false) {
+      setFilterApplied([...filterApplied, currentStar]); //add star review search if more than 1 star is selected
       return  setDisplayedReviews(displayedReviews.concat(result));
      }
 
@@ -114,7 +120,7 @@ function ReviewList({ productId }) {
     <Container>
 
       <Row>
-        <Col sm={6}>
+        <Col sm={4} className="raw-ratings-column">
           <Ratings
             productId={productId}
             sortStarRatings={sortStarRatings}
@@ -122,7 +128,7 @@ function ReviewList({ productId }) {
           />
         </Col>
 
-        <Col sm={6}>
+        <Col sm={7} className="raw-reviews">
 
           <h2>Reviews</h2>
           <Row className="align-items-center raw-review-row">
@@ -141,9 +147,9 @@ function ReviewList({ productId }) {
           </FormControl>
 
           </Row>
-          {displayedReviews.map((review, i) => (
+          {displayedReviews.map((review) => (
             <Review
-              key={`${i}review`}
+              key={uuidv4()}
               review={review}
             />
           ))}
@@ -157,7 +163,7 @@ function ReviewList({ productId }) {
           </Row>
           <FormModal show={show} onHide={handleClose} />
         </Col>
-        <Col sm={1}/>
+        <Col/>
       </Row>
     </Container>
   );

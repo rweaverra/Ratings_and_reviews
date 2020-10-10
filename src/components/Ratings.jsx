@@ -34,11 +34,13 @@ function Ratings({ productId, sortStarRatings }) {
   return (
     <Container className="raw-ratings">
       <h2>Ratings</h2>
+      <Row>
       <StarRating ratings={ratings} number={number} />
+      </Row>
+
       <Row>
         <Recommend recommend={ratings.recommended} />
         {' '}
-
       </Row>
       <Row className="raw-star-row">
         {Object.entries(ratings.ratings).map(([key, value], i) => <RatingsBar thisValue={key} ratings={value} totalRatings={totalRatings} key={i + value} sortStarRatings={sortStarRatings}/>)}

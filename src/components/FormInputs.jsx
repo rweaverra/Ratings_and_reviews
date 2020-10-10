@@ -16,7 +16,7 @@ function FormInputs(props) {
       14: '',
       16: '',
     },
- });
+  });
 
   function submitForm(event) {
     event.preventDefault();
@@ -36,13 +36,9 @@ function FormInputs(props) {
           16: state.characteristics['16'],
         },
       },
-    })
-      .then(() => {
-        props.getReviews();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   function handleChange(event) {
