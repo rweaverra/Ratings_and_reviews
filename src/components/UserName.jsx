@@ -19,10 +19,8 @@ function UserName({ review }) {
 
   return (
     <div>
-      {review.reviewer_name}
-      {' '}
-      {listedDate}
-    </div>
+      {review.reviewer_name}, {listedDate}
+      </div>
 
   );
 }

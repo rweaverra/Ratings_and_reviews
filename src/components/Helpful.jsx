@@ -3,13 +3,10 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 
 function Helpful({ review, helpfulnessArray, handleHelpfulnessArray }) {
-  const totalHelp = review.helpfulness;
-  const plusOneHelp = review.helpfulness + 1;
- const helpful = false;
+var clicked = false;
+var amount = review.helpfulness;
 
-
-  function addHelpful(event) {
-    // setHelpful(!helpful);
+function addHelpful(event) {
     axios({
       method: 'put',
       url: `http://52.26.193.201:3000/reviews/helpful/${review.review_id}`,
@@ -19,21 +16,21 @@ function Helpful({ review, helpfulnessArray, handleHelpfulnessArray }) {
       });
   }
 
+  console.log("helpfulnessArray", helpfulnessArray);
+   const helpfulClicked = helpfulnessArray.filter((productId) => productId === review.review_id);
+   //if current product id equals helpfulness array then disable helpful button
+    console.log('helpfulClicked', helpfulClicked);
+    if(helpfulClicked.length > 0) {
+      console.log('this helpful button has been clicked');
+      clicked = true;
+      amount = amount + 1;
+    }
 
-  // checking to see if helpful button has been clicked
-  const helpfulCheck = helpfulnessArray.filter((productId) => productId === review.review_id);
-
-  console.log('helpful Check', helpfulCheck);
-
-  if (helpfulCheck.length > 0) {
-    helpful = true;
-  }
-  console.log('inside helpful', helpfulnessArray);
   return (
     <div>
-      <Button color="primary" type="button" value={review.helpfulness} disabled={helpful} onClick={() => { addHelpful(); handleHelpfulnessArray(review.review_id);}}>
+      <Button color="primary" type="button" value={amount} disabled={clicked} onClick={() => { addHelpful(); handleHelpfulnessArray(review.review_id); }}>
         Helpful
-        {totalHelp}
+        {review.helpfulness}
       </Button>
     </div>
 

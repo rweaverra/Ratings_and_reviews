@@ -1,9 +1,4 @@
-webpack.config.js,
-.eslintrc.js,
-bundle.js,
-CheckboxWithLabel.test.js,
-ReviewList.jsx
-Helpful.jsx,
-ReportButton.jsx,
-Review.jsx,
-StarRating.jsx
+webpack.config.js
+.eslintrc.js
+.src/components/Helpful.jsx
+Helpful.jsx
