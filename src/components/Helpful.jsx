@@ -16,12 +16,11 @@ function addHelpful(event) {
       });
   }
 
-  console.log("helpfulnessArray", helpfulnessArray);
+
    const helpfulClicked = helpfulnessArray.filter((productId) => productId === review.review_id);
    //if current product id equals helpfulness array then disable helpful button
-    console.log('helpfulClicked', helpfulClicked);
+
     if(helpfulClicked.length > 0) {
-      console.log('this helpful button has been clicked');
       clicked = true;
       amount = amount + 1;
     }

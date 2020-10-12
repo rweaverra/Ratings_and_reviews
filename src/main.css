@@ -39,7 +39,7 @@ margin-right: 25px;
   color: orange;
 background: none;
 text-decoration: underline;
-margin-right: 25px;
+
 
 
 }
@@ -160,4 +160,8 @@ margin-right: 25px;
   height: 15px;
   background: #fff;
   color: black;
+}
+
+.raw-display {
+  display: none;
 }

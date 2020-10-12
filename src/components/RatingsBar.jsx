@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
-import { LinearProgress } from '@material-ui/core';
 import { Container, Col, Row } from 'react-bootstrap';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 
 function RatingsBar({
-  ratings, totalRatings, thisValue, sortStarRatings,
+  ratings,
+  totalRatings,
+  thisValue,
+  sortStarRatings,
+  reset,
+  resetRatings,
 }) {
   const [clicked, setClicked] = useState(true);
   const percentageRatings = (ratings / totalRatings) * 100;
-  const [css, setCss] = useState("raw-rating-button")
+  const [css, setCss] = useState('raw-rating-button');
+
+// console.log('reset', reset);
+
+//   if (reset === true) {
+//     setClicked(true);
+//   }
 
   const handleClick = () => {
-    //this will toggle the css to be used
+    // this will toggle the css to be used
 
-    clicked ? setCss("raw-clicked-rating-button") : setCss("raw-rating-button");
-    setClicked(!clicked);
+    clicked ? setCss('raw-clicked-rating-button') : setCss('raw-rating-button');
+    setClicked(false);
     console.log('clicked', clicked);
   };
 
   return (
-    <Container style={{width: "100%"}}>
+    <Container style={{ width: '100%' }}>
 
       <Row>
 
@@ -30,7 +39,6 @@ function RatingsBar({
             star
             {' '}
           </button>
-
 
           <progress className="raw-progressBar" max="100" value={percentageRatings} />
         </span>
