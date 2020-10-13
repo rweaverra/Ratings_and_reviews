@@ -21,7 +21,7 @@ body {
 border: none;
 background: none;
 text-decoration: underline;
-margin-right: 25px;
+margin-right: 15px;
 
 }
 
@@ -34,11 +34,12 @@ margin-right: 25px;
 }
 
 .raw-clicked-rating-button {
-  border-radius: 8px;
-  border: 2px solid orange;
-  color: orange;
+    color: blue;
+    border: none;
 background: none;
 text-decoration: underline;
+padding: 0;
+margin-right: 10px;
 
 
 

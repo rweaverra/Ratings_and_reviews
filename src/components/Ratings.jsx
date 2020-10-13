@@ -11,6 +11,7 @@ function Ratings({
   productId, sortStarRatings, resetReviews, filterApplied,
 }) {
   const [ratings, setRatings] = useState({});
+  const [showClicked, setShowClicked] = useState([]);
   const number = 'this string is to trigger the average inside of StarRating Component';
 
   let display;
@@ -36,6 +37,15 @@ function Ratings({
     getRatings();
   }, []);
 
+  const starClick = (event) => {
+    console.log('starClick');
+    setShowClicked([...showClicked, event]);
+  };
+
+  const resetClick = () => {
+    setShowClicked([]);
+  };
+
   if (!ratings.ratings) {
     return <div />;
   }
@@ -59,13 +69,20 @@ function Ratings({
             totalRatings={totalRatings}
             key={uuidv4()}
             sortStarRatings={sortStarRatings}
-
+            showClicked={showClicked}
+            starClick={starClick}
 
           />
         ))}
       </Row>
       <Row>
-        <button className={display} onClick={resetReviews} type="button">RESET SEARCH</button>
+        <button
+          className={display}
+          onClick={() => { resetReviews(); resetClick(); }}
+          type="button"
+        >
+          RESET SEARCH
+        </button>
       </Row>
       <Row className="raw-star-row">
         {Object.entries(ratings.characteristics).map(([key, value]) => (

@@ -6,9 +6,20 @@ function RatingsBar({
   totalRatings,
   thisValue,
   sortStarRatings,
+  showClicked,
+  starClick,
 
 }) {
   const percentageRatings = (ratings / totalRatings) * 100;
+  let cssStyle = 'raw-rating-button';
+
+
+  showClicked.map((star) => {
+    if (star === thisValue) {
+      cssStyle = 'raw-clicked-rating-button';
+    }
+  });
+
 
   return (
     <Container style={{ width: '100%' }}>
@@ -16,7 +27,7 @@ function RatingsBar({
       <Row>
 
         <span className="raw-ratings-first-column">
-          <button className="raw-rating-button" type="button" value={thisValue} onClick={() => { sortStarRatings(thisValue); }}>
+          <button className={cssStyle} type="button" value={thisValue} onClick={() => { sortStarRatings(thisValue); starClick(thisValue)}}>
             {thisValue}
             {' '}
             star
