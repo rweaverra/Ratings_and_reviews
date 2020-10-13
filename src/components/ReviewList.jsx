@@ -30,7 +30,6 @@ function ReviewList({ productId }) {
     const displayed = reviews.slice(0, count);
     setDisplayedReviews(displayed);
     setFilterApplied([]);
-    console.log('inside resetReveiws')
   }
 
   const handleHelpfulnessArray = (event) => {
@@ -49,19 +48,13 @@ function ReviewList({ productId }) {
     const currentStar = parseInt(event);
     const result = reviews.filter((rating) => rating.rating === currentStar);
 
-    console.log('current clicked star', event);
-    console.log('result-array of same stars as event', result);
-
     if (filterApplied.length > 0) { // checking to see if a star was alread clicked on
-      console.log('insided of itttttt');
 
       let hasReset = false; // what does has reset do??
       filterApplied.map((rating, i) => { // iterating the stars that have been clicked
         if (rating === currentStar) { // if the clicked star has aleady been clicked once
-          console.log('filterapplied', filterApplied);
           const spliced = filterApplied;
           spliced.splice(i, 1); // remove that star from filter applied
-          console.log('spliced filter', spliced); // shows the remaining clicked stars
           const displayed = reviews.slice(0, count); // this is what resets it after unclicking on star rating, need to adjust this
           hasReset = true; // not sure what this is for, it is a flag for something
           setFilterApplied(spliced);

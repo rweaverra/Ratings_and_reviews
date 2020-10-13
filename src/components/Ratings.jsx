@@ -11,7 +11,6 @@ function Ratings({
   productId, sortStarRatings, resetReviews, filterApplied,
 }) {
   const [ratings, setRatings] = useState({});
-  const [reset, setReset] = useState(false);
   const number = 'this string is to trigger the average inside of StarRating Component';
 
   let display;
@@ -21,15 +20,10 @@ function Ratings({
   }
 
   if (filterApplied.length > 0) {
-    console.log('a filter has been applied');
     display = 'raw-review-buttons';
   } else {
     display = 'raw-display';
   }
-
-  const resetRatings = () => {
-    setReset(!reset);
-  };
 
   function getRatings() {
     axios.get(`http://52.26.193.201:3000/reviews/${productId}/meta`)
@@ -65,8 +59,7 @@ function Ratings({
             totalRatings={totalRatings}
             key={uuidv4()}
             sortStarRatings={sortStarRatings}
-            resetRatings={resetRatings}
-            reset={reset}
+
 
           />
         ))}
