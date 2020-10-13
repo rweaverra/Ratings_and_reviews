@@ -29,6 +29,7 @@ function ReviewList({ productId }) {
   const resetReviews = () => {
     const displayed = reviews.slice(0, count);
     setDisplayedReviews(displayed);
+    setFilterApplied([]);
     console.log('inside resetReveiws')
   }
 

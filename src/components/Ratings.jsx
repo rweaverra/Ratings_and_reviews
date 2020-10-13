@@ -7,23 +7,25 @@ import RatingsBar from './RatingsBar.jsx';
 import Recommend from './Recommend.jsx';
 import CharacteristicSlider from './CharacteristicSlider.jsx';
 
-function Ratings({ productId, sortStarRatings, resetReviews, filterApplied}) {
+function Ratings({
+  productId, sortStarRatings, resetReviews, filterApplied,
+}) {
   const [ratings, setRatings] = useState({});
   const [reset, setReset] = useState(false);
-  // const [display, setDisplay] = useState('raw-display');
   const number = 'this string is to trigger the average inside of StarRating Component';
-  const display = 'raw-display';
+
+  let display;
 
   if (ratings.ratings) {
     var totalRatings = Object.values(ratings.ratings).reduce((p, v) => p + v);
   }
 
-  //NEED TO UPDATE THIS TO MAKE THE RESET BUTTON APPEAR, TRIED SETING DISPLAY BUT GOT CAUGHT WITH AN INFINITE LOOP OF RERENDERS
-  // if(filterApplied.length> 0){
-  //   console.log('a filter has been applied')
-  //   display = 'raw-review-buttons';
-
-  // }
+  if (filterApplied.length > 0) {
+    console.log('a filter has been applied');
+    display = 'raw-review-buttons';
+  } else {
+    display = 'raw-display';
+  }
 
   const resetRatings = () => {
     setReset(!reset);
@@ -69,6 +71,9 @@ function Ratings({ productId, sortStarRatings, resetReviews, filterApplied}) {
           />
         ))}
       </Row>
+      <Row>
+        <button className={display} onClick={resetReviews} type="button">RESET SEARCH</button>
+      </Row>
       <Row className="raw-star-row">
         {Object.entries(ratings.characteristics).map(([key, value]) => (
           <CharacteristicSlider
@@ -77,9 +82,6 @@ function Ratings({ productId, sortStarRatings, resetReviews, filterApplied}) {
             key={uuidv4()}
           />
         ))}
-      </Row>
-      <Row>
-        <button className={display} onClick={resetReviews} type="button">RESET SEARCH</button>
       </Row>
     </Container>
 
