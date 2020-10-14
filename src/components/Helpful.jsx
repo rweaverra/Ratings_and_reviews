@@ -4,16 +4,18 @@ import Button from '@material-ui/core/Button';
 
 function Helpful({ review, helpfulnessArray, handleHelpfulnessArray }) {
 var clicked = false;
-var amount = review.helpfulness;
+var helpCount = review.helpfulness
+var amount = parseInt(helpCount);
+
 
 function addHelpful(event) {
-    axios({
-      method: 'put',
-      url: `http://52.26.193.201:3000/reviews/helpful/${review.review_id}`,
-    })
-      .then((response) => {
-        console.log(response);
-      });
+    // axios({
+    //   method: 'put',
+    //   url: `http://52.26.193.201:3000/reviews/helpful/${review.review_id}`,
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
   }
 
 
@@ -25,11 +27,15 @@ function addHelpful(event) {
       amount = amount + 1;
     }
 
+    console.log('amount', amount)
+    console.log('clicked', clicked)
+
+
   return (
     <div>
-      <Button color="primary" type="button" value={amount} disabled={clicked} onClick={() => { addHelpful(); handleHelpfulnessArray(review.review_id); }}>
+      <Button color="primary" type="button" value={review.helpfulness} disabled={clicked} onClick={() => { addHelpful(); handleHelpfulnessArray(review.review_id); }}>
         Helpful
-        {review.helpfulness}
+        {amount}
       </Button>
     </div>
 
