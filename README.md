@@ -4,11 +4,9 @@ Ragewear Clothing Company is an e-commerce platform for clothing and outdoor bra
 ## Table of Contents
 
 * [Related Projects](#related-projects)
-Demo
 * [Demo](#demo)
-Technologies Used
 * [Technologies Used](#technologies-used)
-Requirements
+
 * [Requirements](#requirements)
 Development
 * [Development](#development)
