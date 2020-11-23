@@ -1,4 +1,4 @@
-# RageWear Ratings and reviews Microservice
+# RageWear ratings and reviews microservice
 Ragewear Clothing Company is an e-commerce platform for clothing and outdoor brand apparel. This repository contains the code for the ratings and reviews microservice of this platform’s product page. This is one of 4 microservices(product description, questions and answers, related items) that are served together on a proxy through an Amazon Web Services instance.
 
 ## Table of Contents
@@ -27,7 +27,11 @@ Ragewear Clothing Company is an e-commerce platform for clothing and outdoor bra
 
 ## Development
   	
-> npm install
-> npm run start
-> npm run build
+> use the code below to start app
+	
+~~~~
+npm install
+npm run start
+npm run build
+~~~~
 
