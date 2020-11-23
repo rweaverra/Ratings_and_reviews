@@ -14,7 +14,8 @@ Ragewear Clothing Company is an e-commerce platform for clothing and outdoor bra
 ## Technologies Used
 - JavaScript
 - React
-- Bootstrap React
+- React Bootstrap
+- Material UI
 - Express
 - Node.js
 - Jest
