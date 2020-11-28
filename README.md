@@ -35,4 +35,5 @@ npm install
 npm run start
 npm run build
 ~~~~
+> Open localhost:3000 inside browser to start game
 
